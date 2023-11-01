@@ -8,4 +8,4 @@ class Client(models.Model):
     email = models.CharField(max_length=30, null=True, default=None)
     birthday = models.DateField(null=True, default=None)
     comment = models.CharField(max_length=150, null=True, default=None)
-    image = models.FileField(upload_to=None, height_field=None, width_field=None, max_length=500)
+    #image = models.FileField(upload_to=None, height_field=None, width_field=None, max_length=500)
