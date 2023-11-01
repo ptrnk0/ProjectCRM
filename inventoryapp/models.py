@@ -1,5 +1,5 @@
 from django.db import models
-from .staffapp import models as staff
+from staffapp import models as staff
 
 # Create your models here.
 class Commodity(models.Model):
@@ -10,8 +10,7 @@ class Commodity(models.Model):
 
 class Order(models.Model):
     date = models.DateTimeField()
-    id_commodity = models.ForeignKey(Commodity)
-    id_employee = models.ForeignKey(staff.Staff)
+    id_commodity = models.ForeignKey(Commodity, on_delete=models.PROTECT)
+    id_employee = models.ForeignKey(staff.Staff, on_delete=models.PROTECT)
     amount = models.IntegerField()
     discount = models.FloatField()
-
