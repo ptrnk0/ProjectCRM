@@ -7,7 +7,6 @@
         <link href="{% static 'css/style.css' %}" rel="stylesheet" >
     </head>
     <body>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <div class="container">
             <div class="row">
                 <div class="col-12">
@@ -43,17 +42,12 @@
                 <div class="col-lg-3">
                     <div id="buttons" class="row-cols-2">
                         <button onclick="window.location.href= '{% url 'client' 'all_clients' %}';" type="button" class="btn btn-secondary">All Clients</button>
-                        <button onclick="window.location.href='{% url 'client' 'insert_client' %}';" type="button" class="btn btn-primary">Insert Client</button>
+                        <button onclick="window.location.href='{% url 'client' 'insert_client' %}';" type="button" class="btn btn-secondary">Insert Client</button>
                     </div>
                 </div>
                 <div class="col-lg-9">
-                    <form action="" method="POST">
-                        {% csrf_token %}
-                        <table class="table table-hover text-dark">
-                            {{ form }}
-                        </table>
-                        <input id="submit" type="submit" value="Submit" class="btn btn-success">
-                    </form>
+                    <div class="alert alert-success">Data submited successfuly</div>
+                    <button onclick="window.location.href='{% url 'client' 'insert_client' %}';" type="button" class="btn btn-primary">Add another client</button>
                 </div>
             </div>
         </div>

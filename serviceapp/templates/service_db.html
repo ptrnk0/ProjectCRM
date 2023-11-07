@@ -22,7 +22,7 @@
                         <a class="nav-link" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{% url 'client' 'all_clients' %}">Client</a>
+                        <a class="nav-link" href="{% url 'client' 'all_clients' %}">Client</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'inventory' 'commodity' %}">Inventory</a>
@@ -31,7 +31,7 @@
                         <a class="nav-link" href="#">Record</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'service' 'service1' %}">Service</a>
+                        <a class="nav-link active" aria-current="page" href="{% url 'service' 'service1' %}">Service</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Staff</a>
@@ -61,36 +61,30 @@
             <div id="third_row" class="row">
                 <div class="col-lg-3">
                     <div id="buttons" class="row-cols-2">
-                        <button onclick="window.location.href='{% url 'client' 'all_clients' %}';" type="button" class="btn btn-primary">All Clients</button>
-                        <button onclick="window.location.href='{% url 'client' 'insert_client' %}';" type="button" class="btn btn-secondary">Insert Client</button>
+                        <button onclick="window.location.href= '{% url 'service' 'service1' %}';" type="button" class="btn btn-secondary">Service</button>
+                        <button onclick="window.location.href='{% url 'service' 'resource' %}';" type="button" class="btn btn-secondary">Resource</button>
+                        <button onclick="window.location.href='{% url 'service' 'service_table' %}';" type="button" class="btn btn-primary">Service Table</button>
+                        <button onclick="window.location.href='{% url 'service' 'resource_table' %}';" type="button" class="btn btn-secondary">Resource Table</button>
                     </div>
                 </div>
                 <div class="col-lg-9">
-                    <form action="http://127.0.0.1:8000/client/delete_client" method="post">
+                    <form action="http://127.0.0.1:8000/service/delete_service" method="post">
                         {% csrf_token %}
                         <table class="table table-hover text-center collapsing">
                             <tr>
                                 <th>Select</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Phone</th>
-                                <th>Email</th>
-                                <th>Birthday</th>
-                                <th>Comment</th>
+                                <th>Name</th>
+                                <th>Resource</th>
                             </tr>
                             {% for item in form %}
                             <tr>
                                 <th><input type="checkbox" class="form-check-input" name="id" value ="{{ item.id }}"></th>
-                                <th>{{item.first_name}}</th>
-                                <th>{{item.last_name}}</th>
-                                <th>{{item.phone}}</th>
-                                <th>{{item.email}}</th>
-                                <th>{{item.birthday}}</th>
-                                <th>{{item.comment}}</th>
+                                <th>{{item.name}}</th>
+                                <th>{{item.id_resource}}</th>
                             </tr>
                             {% endfor %}
                         </table>
-                        <input type="submit" class="btn btn-danger" value="Delete Client(s)"/>
+                        <input type="submit" class="btn btn-danger" value="Delete Service(s)"/>
                     </form>
                 </div>
             </div>
