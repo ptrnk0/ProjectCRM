@@ -23,7 +23,7 @@
                         <a class="nav-link" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{% url 'client' 'all_clients' %}">Client</a>
+                        <a class="nav-link" href="{% url 'client' 'all_clients' %}">Client</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'inventory' 'commodity' %}">Inventory</a>
@@ -32,7 +32,7 @@
                         <a class="nav-link" href="#">Record</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'service' 'service1' %}">Service</a>
+                        <a class="nav-link active" aria-current="page" href="{% url 'service' 'service1' %}">Service</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Staff</a>
@@ -42,8 +42,10 @@
             <div id="third_row" class="row">
                 <div class="col-lg-3">
                     <div id="buttons" class="row-cols-2">
-                        <button onclick="window.location.href= '{% url 'client' 'all_clients' %}';" type="button" class="btn btn-secondary">All Clients</button>
-                        <button onclick="window.location.href='{% url 'client' 'insert_client' %}';" type="button" class="btn btn-primary">Insert Client</button>
+                        <button onclick="window.location.href= '{% url 'service' 'service1' %}';" type="button" class="btn btn-secondary">Service</button>
+                        <button onclick="window.location.href='{% url 'service' 'resource' %}';" type="button" class="btn btn-primary">Resource</button>
+                        <button onclick="window.location.href='{% url 'service' 'service_table' %}';" type="button" class="btn btn-secondary">Service Table</button>
+                        <button onclick="window.location.href='{% url 'service' 'resource_table' %}';" type="button" class="btn btn-secondary">Resource Table</button>
                     </div>
                 </div>
                 <div class="col-lg-9">
