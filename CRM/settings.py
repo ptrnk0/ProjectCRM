@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 from dotenv import dotenv_values
+import os
 
 config = dotenv_values('.env')
 
@@ -33,14 +34,12 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
-STATIC_URL = 'static/'
-
 INSTALLED_APPS = [
-    'inventoryapp.apps.InventoryappConfig',
-    'recordapp.apps.RecordappConfig',
-    'serviceapp.apps.ServiceappConfig',
+    'inventoryapp',
+    'recordapp',
+    'serviceapp',
     'staffapp.apps.StaffappConfig',
-    'clientapp.apps.ClientappConfig',
+    'clientapp',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -126,6 +125,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
+
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# # Directories to search for static files
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'static'),
+# ]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
