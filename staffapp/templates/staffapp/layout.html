@@ -1,3 +1,4 @@
+<!doctype html>
 <!DOCTYPE html>
 <html>
     <head>
@@ -22,7 +23,7 @@
                         <a class="nav-link" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="{% url 'client' 'all_clients' %}">Client</a>
+                        <a class="nav-link" href="{% url 'client' 'all_clients' %}">Client</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'inventory' 'commodity' %}">Inventory</a>
@@ -34,22 +35,11 @@
                         <a class="nav-link" href="{% url 'service' 'service1' %}">Service</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'all_staff' %}">Staff</a>
+                        <a class="nav-link active" aria-current="page" href="{% url 'all_staff' %}">Staff</a>
                     </li>
                 </ul>
             </div>
-            <div id="third_row" class="row">
-                <div class="col-lg-3">
-                    <div id="buttons" class="row-cols-2">
-                        <button onclick="window.location.href= '{% url 'client' 'all_clients' %}';" type="button" class="btn btn-secondary">All Clients</button>
-                        <button onclick="window.location.href='{% url 'client' 'insert_client' %}';" type="button" class="btn btn-secondary">Insert Client</button>
-                    </div>
-                </div>
-                <div class="col-lg-9">
-                    <div class="alert alert-success">Data submited successfuly</div>
-                    <button onclick="window.location.href='{% url 'client' 'insert_client' %}';" type="button" class="btn btn-primary">Add another client</button>
-                </div>
-            </div>
-        </div>
-    </body>
-</html>
+<body>
+    {% block name_body %}
+    {% endblock %}
+</body>

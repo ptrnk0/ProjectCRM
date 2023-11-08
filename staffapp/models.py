@@ -11,6 +11,9 @@ class Staff(models.Model):
     job_title = models.CharField(max_length=15)
     access_level = models.IntegerField()
 
+    def __str__(self):
+        return f'{self.first_name} {self.last_name}, {self.sex}, {self.email}, {self.phone}, {self.job_title}, {self.access_level}'
+
 
 class Schedule(models.Model):
     date = models.DateField()
