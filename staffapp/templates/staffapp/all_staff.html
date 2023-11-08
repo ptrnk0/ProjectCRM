@@ -1,0 +1,41 @@
+{% extends 'staffapp/layout.html' %}
+
+{% block name_body %}
+<html>
+
+    <div id="third_row" class="row">
+        <div class="col-lg-3">
+            <div id="buttons" class="row-cols-2">
+                <button onclick="window.location.href= '{% url 'all_staff' %}';" type="button" class="btn btn-primary">All staff</button>
+                <button onclick="window.location.href='{% url 'create_staff' %}';" type="button" class="btn btn-secondary">Create staff</button>
+            </div>
+        </div>
+        <div class="col-lg-9">
+            <table class="table table-hover text-center collapsing">
+                <tr>
+                    <th>Select</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Sex</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Job title</th>
+                    <th>Access level</th>
+                </tr>
+                {% for item in staff %}
+                <tr>
+                    <th><input type="checkbox" class="form-check-input" name="id" value ="{{ item.id }}"></th>
+                    <th>{{item.first_name}}</th>
+                    <th>{{item.last_name}}</th>
+                    <th>{{item.sex}}</th>
+                    <th>{{item.email}}</th>
+                    <th>{{item.phone}}</th>
+                    <th>{{item.job_title}}</th>
+                    <th>{{item.access_level}}</th>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</html>
+{% endblock %}
