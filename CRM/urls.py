@@ -25,5 +25,5 @@ urlpatterns = [
     path('', include('inventoryapp.urls')),
     path('', include('serviceapp.urls')),
     path('', include('staffapp.urls')),
-    path('', all_staff_view),
+    path('', login_required(all_staff_view, login_url='http://127.0.0.1:8000/admin')),
 ]
