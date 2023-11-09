@@ -34,7 +34,7 @@ def inventory_form_view(request, subDir):
         return render(request, 'commodity_db.html', context)
     
     elif subDir == 'order_table':
-        data = models.Order.objects.all()
+        data = models.Order.objects.all().select_related()
         context = {'form': data}
         return render(request, 'order_db.html', context)
 
