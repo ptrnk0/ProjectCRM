@@ -3,8 +3,16 @@ from django.template.loader import render_to_string
 from clientapp import forms
 from django.http import HttpResponse
 from clientapp.models import Client
+from django.contrib.auth.decorators import login_required, user_passes_test
+
+def testpermission(user):
+    if user.is_authenticated:
+        return True
+    else:
+        return False
 
 # Create your views here.
+# @login_required(login_url='http://127.0.0.1:8000/admin')
 def client_form_view(request, subClient):
     if subClient == 'all_clients':
         data = Client.objects.all()
@@ -24,7 +32,7 @@ def client_form_view(request, subClient):
         
         return render(request, 'client.html', context)
 
-
+# @user_passes_test(testpermission, login_url='http://127.0.0.1:8000/admin')
 def clientDelete(request):
     try:
         for i in request.POST.copy().pop('id'):
