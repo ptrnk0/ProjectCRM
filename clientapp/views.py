@@ -30,7 +30,7 @@ def client_form_view(request, subClient):
             return HttpResponse(rendered)
         context = {'form': form}
         
-        return render(request, 'client.html', context)
+        return render(request, 'client_create.html', context)
 
 # @user_passes_test(testpermission, login_url='http://127.0.0.1:8000/admin')
 def clientDelete(request):
