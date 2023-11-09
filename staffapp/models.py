@@ -12,7 +12,7 @@ class Staff(models.Model):
     access_level = models.IntegerField()
 
     def __str__(self):
-        return f'{self.first_name} {self.last_name}, {self.sex}, {self.email}, {self.phone}, {self.job_title}, {self.access_level}'
+        return f'{self.first_name} {self.last_name}'
 
 
 class Schedule(models.Model):

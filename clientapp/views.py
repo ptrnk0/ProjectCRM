@@ -22,7 +22,7 @@ def client_form_view(request, subClient):
             return HttpResponse(rendered)
         context = {'form': form}
         
-        return render(request, 'client.html', context)
+        return render(request, 'client_create.html', context)
 
 
 def clientDelete(request):
