@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from staffapp.views import all_staff_view
+from django.contrib.auth.decorators import login_required, permission_required 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
