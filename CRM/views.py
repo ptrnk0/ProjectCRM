@@ -1,7 +1,5 @@
 from django.contrib.auth import authenticate, login
 from django.shortcuts import redirect, render
-from django.http import HttpResponse
-import json
 
 
 def my_view(request):
