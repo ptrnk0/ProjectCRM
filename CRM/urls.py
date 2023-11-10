@@ -17,7 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from staffapp.views import all_staff_view
-from django.contrib.auth.decorators import login_required, permission_required 
+from django.contrib.auth.decorators import login_required, permission_required
+from CRM.views import my_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,5 +26,6 @@ urlpatterns = [
     path('', include('inventoryapp.urls')),
     path('', include('serviceapp.urls')),
     path('', include('staffapp.urls')),
-    path('', login_required(all_staff_view, login_url='http://127.0.0.1:8000/admin')),
+    path('', login_required(all_staff_view)),
+    path('login/', my_view, name='loginSite'),
 ]

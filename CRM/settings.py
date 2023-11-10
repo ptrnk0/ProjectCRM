@@ -63,7 +63,7 @@ ROOT_URLCONF = 'CRM.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['templates', 'clientapp/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -130,8 +130,10 @@ STATIC_URL = 'static/'
 
 # # Directories to search for static files
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
-    '/home/tarlan/repos/ProjectCRM/clientapp/static',
+    'clientapp/static',
+    'inventoryapp/static',
+    'serviceapp/static',
+    'staffapp/static',
 ]
 
 # Default primary key field type
@@ -140,4 +142,4 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-LOGIN_URL = 'http://127.0.0.1:8000/admin'
+LOGIN_URL = 'http://127.0.0.1:8000/login/'

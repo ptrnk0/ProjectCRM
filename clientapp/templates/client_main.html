@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block container %}
+<div id="third_row" class="row">
+    <div class="col-lg-3">
+        <p id="buttons" class="row-cols-2">
+            {% if request.path == '/client/insert_client/' %}
+            <button onclick="window.location.href='{% url 'client' 'all_clients' %}';" type="button" class="btn btn-secondary">All Clients</button>
+            <button onclick="window.location.href='{% url 'client' 'insert_client' %}';" type="button" class="btn btn-primary">Insert Client</button>
+            {% elif request.path == '/client/all_clients/' %}
+            <button onclick="window.location.href='{% url 'client' 'all_clients' %}';" type="button" class="btn btn-primary">All Clients</button>
+            <button onclick="window.location.href='{% url 'client' 'insert_client' %}';" type="button" class="btn btn-secondary">Insert Client</button>
+            {% else %}
+            <button onclick="window.location.href='{% url 'client' 'all_clients' %}';" type="button" class="btn btn-secondary">All Clients</button>
+            <button onclick="window.location.href='{% url 'client' 'insert_client' %}';" type="button" class="btn btn-secondary">Insert Client</button>
+            {% endif %}
+        </p>
+    </div>
+    <div class="col-lg-9">
+{% block content %}
+        
+{% endblock %}
+    </div>
+</div>
+{% endblock %}
