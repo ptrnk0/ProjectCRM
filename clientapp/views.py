@@ -13,7 +13,7 @@ def client_form_view(request, subClient):
     elif subClient == 'insert_client':
         form = forms.ClientForm(initial={'phone': '+380'})
         if request.method == 'POST':
-            form = forms.ClientForm(request.POST)
+            form = forms.ClientForm(request.POST, request.FILES)
             if form.is_valid():
                 form.save()
             else:
