@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block container %}
+<div id="third_row" class="row">
+    <div class="col-lg-3">
+        <div id="buttons" class="row-cols-2">
+            {% if request.path == '/service/service1/' %}
+            <button onclick="window.location.href= '{% url 'service' 'service1' %}';" type="button" class="btn btn-primary">Service</button>
+            <button onclick="window.location.href='{% url 'service' 'resource' %}';" type="button" class="btn btn-secondary">Resource</button>
+            <button onclick="window.location.href='{% url 'service' 'service_table' %}';" type="button" class="btn btn-secondary">Service Table</button>
+            <button onclick="window.location.href='{% url 'service' 'resource_table' %}';" type="button" class="btn btn-secondary">Resource Table</button>
+            {% elif request.path == '/service/resource/' %}
+            <button onclick="window.location.href= '{% url 'service' 'service1' %}';" type="button" class="btn btn-secondary">Service</button>
+            <button onclick="window.location.href='{% url 'service' 'resource' %}';" type="button" class="btn btn-primary">Resource</button>
+            <button onclick="window.location.href='{% url 'service' 'service_table' %}';" type="button" class="btn btn-secondary">Service Table</button>
+            <button onclick="window.location.href='{% url 'service' 'resource_table' %}';" type="button" class="btn btn-secondary">Resource Table</button>
+            {% elif request.path == '/service/service_table/' %}
+            <button onclick="window.location.href= '{% url 'service' 'service1' %}';" type="button" class="btn btn-secondary">Service</button>
+            <button onclick="window.location.href='{% url 'service' 'resource' %}';" type="button" class="btn btn-secondary">Resource</button>
+            <button onclick="window.location.href='{% url 'service' 'service_table' %}';" type="button" class="btn btn-primary">Service Table</button>
+            <button onclick="window.location.href='{% url 'service' 'resource_table' %}';" type="button" class="btn btn-secondary">Resource Table</button>
+            {% elif request.path == '/service/resource_table/' %}
+            <button onclick="window.location.href= '{% url 'service' 'service1' %}';" type="button" class="btn btn-secondary">Service</button>
+            <button onclick="window.location.href='{% url 'service' 'resource' %}';" type="button" class="btn btn-secondary">Resource</button>
+            <button onclick="window.location.href='{% url 'service' 'service_table' %}';" type="button" class="btn btn-secondary">Service Table</button>
+            <button onclick="window.location.href='{% url 'service' 'resource_table' %}';" type="button" class="btn btn-primary">Resource Table</button>
+            {% else %}
+            <button onclick="window.location.href= '{% url 'service' 'service1' %}';" type="button" class="btn btn-secondary">Service</button>
+            <button onclick="window.location.href='{% url 'service' 'resource' %}';" type="button" class="btn btn-secondary">Resource</button>
+            <button onclick="window.location.href='{% url 'service' 'service_table' %}';" type="button" class="btn btn-secondary">Service Table</button>
+            <button onclick="window.location.href='{% url 'service' 'resource_table' %}';" type="button" class="btn btn-secondary">Resource Table</button>
+            {% endif %}
+        </div>
+    </div>
+    <div class="col-lg-9">
+{% block content %}
+
+{% endblock %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block container %}
+<div id="third_row" class="row">
+    <div class="col-lg-3">
+        <div id="buttons" class="row-cols-2">
+            {% if request.path == '/inventory/commodity/' %}
+            <button onclick="window.location.href='{% url 'inventory' 'commodity' %}';" type="button" class="btn btn-primary">Commodity</button>
+            <button onclick="window.location.href='{% url 'inventory' 'order' %}';" type="button" class="btn btn-secondary">Order</button>
+            <button onclick="window.location.href='{% url 'inventory' 'commodity_table' %}';" type="button" class="btn btn-secondary">Commodity Table</button>
+            <button onclick="window.location.href='{% url 'inventory' 'order_table' %}';" type="button" class="btn btn-secondary">Order Table</button>
+            {% elif request.path == '/inventory/order/' %}
+            <button onclick="window.location.href='{% url 'inventory' 'commodity' %}';" type="button" class="btn btn-secondary">Commodity</button>
+            <button onclick="window.location.href='{% url 'inventory' 'order' %}';" type="button" class="btn btn-primary">Order</button>
+            <button onclick="window.location.href='{% url 'inventory' 'commodity_table' %}';" type="button" class="btn btn-secondary">Commodity Table</button>
+            <button onclick="window.location.href='{% url 'inventory' 'order_table' %}';" type="button" class="btn btn-secondary">Order Table</button>
+            {% elif request.path == '/inventory/commodity_table/' %}
+            <button onclick="window.location.href='{% url 'inventory' 'commodity' %}';" type="button" class="btn btn-secondary">Commodity</button>
+            <button onclick="window.location.href='{% url 'inventory' 'order' %}';" type="button" class="btn btn-secondary">Order</button>
+            <button onclick="window.location.href='{% url 'inventory' 'commodity_table' %}';" type="button" class="btn btn-primary">Commodity Table</button>
+            <button onclick="window.location.href='{% url 'inventory' 'order_table' %}';" type="button" class="btn btn-secondary">Order Table</button>
+            {% elif request.path == '/inventory/order_table/' %}
+            <button onclick="window.location.href='{% url 'inventory' 'commodity' %}';" type="button" class="btn btn-secondary">Commodity</button>
+            <button onclick="window.location.href='{% url 'inventory' 'order' %}';" type="button" class="btn btn-secondary">Order</button>
+            <button onclick="window.location.href='{% url 'inventory' 'commodity_table' %}';" type="button" class="btn btn-secondary">Commodity Table</button>
+            <button onclick="window.location.href='{% url 'inventory' 'order_table' %}';" type="button" class="btn btn-primary">Order Table</button>
+            {% else %}
+            <button onclick="window.location.href='{% url 'inventory' 'commodity' %}';" type="button" class="btn btn-secondary">Commodity</button>
+            <button onclick="window.location.href='{% url 'inventory' 'order' %}';" type="button" class="btn btn-secondary">Order</button>
+            <button onclick="window.location.href='{% url 'inventory' 'commodity_table' %}';" type="button" class="btn btn-secondary">Commodity Table</button>
+            <button onclick="window.location.href='{% url 'inventory' 'order_table' %}';" type="button" class="btn btn-secondary">Order Table</button>
+            {% endif %}
+        </div>
+    </div>
+    <div class="col-lg-9">
+{% block content %}
+
+{% endblock %}
+    </div>
+</div>
+{% endblock %}
