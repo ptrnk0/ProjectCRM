@@ -1,5 +1,9 @@
 {% extends 'staffapp/staff_main.html' %}
 
+{% block all_staff %}
+<button onclick="window.location.href= '{% url 'all_staff' %}';" type="button" class="btn btn-primary">All staff</button>
+{% endblock %}
+
 {% block content %}
 <form action="" method="post">
     {% csrf_token %}

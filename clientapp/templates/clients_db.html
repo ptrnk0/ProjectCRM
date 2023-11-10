@@ -1,5 +1,9 @@
 {% extends 'client_main.html' %}
 
+{% block bt_all %}
+<button onclick="window.location.href='{% url 'client' 'all_clients' %}';" type="button" class="btn btn-primary">All Clients</button>
+{% endblock %}
+
 {% block content %}
 <form action="{% url 'client' 'delete_client' %}" method="post">
     {% csrf_token %}

@@ -1,5 +1,9 @@
 {% extends 'client_main.html' %}
 
+{% block bt_ins %}
+<button onclick="window.location.href='{% url 'client' 'insert_client' %}';" type="button" class="btn btn-primary">Insert Client</button>
+{% endblock %}
+
 {% block content %}
 <form action="" method="POST">
     {% csrf_token %}

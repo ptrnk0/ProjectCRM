@@ -1,5 +1,9 @@
 {% extends 'inventory_main.html' %}
 
+{% block commodity %}
+<button onclick="window.location.href='{% url 'inventory' 'commodity' %}';" type="button" class="btn btn-primary">Commodity</button>
+{% endblock %}
+
 {% block content %}
 <form action="" method="POST">
     {% csrf_token %}

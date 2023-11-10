@@ -1,26 +1,26 @@
 {% extends 'base.html' %}
 
+{% block title %}
+<title>Staff</title>
+{% endblock %}
+
+{% block staff %}
+<a class="nav-link active" aria-current="page" href="{% url 'all_staff' %}">Staff</a>
+{% endblock %}
+
 {% block container %}
 <div id="third_row" class="row">
     <div class="col-lg-3">
         <div id="buttons" class="row-cols-2">
-            {% if request.path == '/all_staff/' %}
-            <button onclick="window.location.href= '{% url 'all_staff' %}';" type="button" class="btn btn-primary">All staff</button>
-            <button onclick="window.location.href='{% url 'create_staff' %}';" type="button" class="btn btn-secondary">Create staff</button>
-            <button onclick="window.location.href='{% url 'create_schedule' %}';" type="button" class="btn btn-secondary">Create schedule</button>
-            {% elif request.path == '/create_staff/' %}
+            {% block all_staff %}
             <button onclick="window.location.href= '{% url 'all_staff' %}';" type="button" class="btn btn-secondary">All staff</button>
-            <button onclick="window.location.href='{% url 'create_staff' %}';" type="button" class="btn btn-primary">Create staff</button>
-            <button onclick="window.location.href='{% url 'create_schedule' %}';" type="button" class="btn btn-secondary">Create schedule</button>
-            {% elif request.path == '/create_schedule/' %}
-            <button onclick="window.location.href= '{% url 'all_staff' %}';" type="button" class="btn btn-secondary">All staff</button>
+            {% endblock %}
+            {% block create_staff %}
             <button onclick="window.location.href='{% url 'create_staff' %}';" type="button" class="btn btn-secondary">Create staff</button>
-            <button onclick="window.location.href='{% url 'create_schedule' %}';" type="button" class="btn btn-primary">Create schedule</button>
-            {% else %}
-            <button onclick="window.location.href= '{% url 'all_staff' %}';" type="button" class="btn btn-secondary">All staff</button>
-            <button onclick="window.location.href='{% url 'create_staff' %}';" type="button" class="btn btn-secondary">Create staff</button>
+            {% endblock %}
+            {% block create_schedule %}
             <button onclick="window.location.href='{% url 'create_schedule' %}';" type="button" class="btn btn-secondary">Create schedule</button>
-            {% endif %}
+            {% endblock %}
         </div>
     </div>
     <div class="col-lg-9">

@@ -1,5 +1,9 @@
 {% extends 'service_main.html' %}
 
+{% block resource %}
+<button onclick="window.location.href='{% url 'service' 'resource' %}';" type="button" class="btn btn-primary">Resource</button>
+{% endblock %}
+
 {% block content %}
 <form action="" method="POST">
     {% csrf_token %}
