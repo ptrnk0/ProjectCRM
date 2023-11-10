@@ -1,5 +1,9 @@
 {% extends 'inventory_main.html' %}
 
+{% block ord_table %}
+<button onclick="window.location.href='{% url 'inventory' 'order_table' %}';" type="button" class="btn btn-primary">Order Table</button>
+{% endblock %}
+
 {% block content %}
 <form action="{% url 'inventory' 'delete_order' %}" method="post">
     {% csrf_token %}

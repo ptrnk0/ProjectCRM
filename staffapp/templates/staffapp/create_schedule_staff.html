@@ -1,5 +1,9 @@
 {% extends 'staffapp/staff_main.html' %}
 
+{% block create_schedule %}
+<button onclick="window.location.href='{% url 'create_schedule' %}';" type="button" class="btn btn-primary">Create schedule</button>
+{% endblock %}
+
 {% block content %}
 <form method="post">
    {% csrf_token %}

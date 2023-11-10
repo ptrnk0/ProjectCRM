@@ -1,5 +1,9 @@
 {% extends 'inventory_main.html' %}
 
+{% block com_table %}
+<button onclick="window.location.href='{% url 'inventory' 'commodity_table' %}';" type="button" class="btn btn-primary">Commodity Table</button>
+{% endblock %}
+
 {% block content %}
 <form action="{% url 'inventory' 'delete_commodity' %}" method="post">
     {% csrf_token %}
