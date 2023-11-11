@@ -6,6 +6,12 @@ class ComodityForm(forms.ModelForm):
         model = models.Commodity
         fields = '__all__'
 
+        widgets = {
+            'name': forms.TextInput(attrs={"class": "form-control"}),
+            'price': forms.NumberInput(attrs={"class": "form-control"}),
+            'amount': forms.NumberInput(attrs={"class": "form-control"}),
+        }
+
 
 class OrderForm(forms.ModelForm):
 
@@ -18,5 +24,9 @@ class OrderForm(forms.ModelForm):
         fields = '__all__'
 
         widgets = {
-            'date': forms.DateTimeInput(attrs={'type': 'date'}),
+            'date': forms.DateTimeInput(attrs={'type': 'date', "class": "form-control"}),
+            'id_commodity': forms.Select(attrs={"class": "form-select"}),
+            'id_employee': forms.Select(attrs={"class": "form-select"}),
+            'amount': forms.NumberInput(attrs={"class": "form-control"}),
+            'discount': forms.NumberInput(attrs={"class": "form-control"}),
         }

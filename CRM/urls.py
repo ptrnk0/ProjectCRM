@@ -18,14 +18,15 @@ from django.contrib import admin
 from django.urls import path, include
 from staffapp.views import all_staff_view
 from django.contrib.auth.decorators import login_required, permission_required
-from CRM.views import my_view
+from CRM.views import login_view, logout_view
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls, name='admin'),
     path('', include('clientapp.urls')),
     path('', include('inventoryapp.urls')),
     path('', include('serviceapp.urls')),
     path('', include('staffapp.urls')),
     path('', login_required(all_staff_view)),
-    path('login/', my_view, name='loginSite'),
+    path('login/', login_view, name='loginSite'),
+    path('logout/', logout_view, name='logoutSite'),
 ]
