@@ -7,17 +7,13 @@ class ClientForm(forms.ModelForm):
         fields = '__all__'
 
         widgets = {
-            'comment': forms.Textarea(attrs={"cols": 30, "rows": 3}),
-            'birthday': forms.NumberInput(attrs={'type': 'date'}),
-            
-        }
-
-        help_texts = {
-            'birthday': ('Enter date in format dd/mm/yy'),
-        }
-
-        labels = {
-            'phone': ('Phone number'),
+            'first_name': forms.TextInput(attrs={"class": "form-control"}),
+            'last_name': forms.TextInput(attrs={"class": "form-control"}),
+            'comment': forms.Textarea(attrs={"cols": 30, "rows": 3, "class": "form-control"}),
+            'birthday': forms.DateTimeInput(attrs={'type': 'date', "class": "form-control"}),
+            'email': forms.EmailInput(attrs={"class": "form-control"}),
+            'phone': forms.TextInput(attrs={"class": "form-control"}),
+            'image': forms.FileInput(attrs={"class": "form-control"}),
         }
 
 

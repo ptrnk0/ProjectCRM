@@ -5,11 +5,52 @@
 {% endblock %}
 
 {% block content %}
-<form action="" method="POST" enctype="multipart/form-data">
+<form  action="" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-    <table class="table table-hover text-dark shadow-sm p-3 mb-4 bg-body-tertiary">
-        {{ form }}
-    </table>
+    <div id="insert_table" class="shadow-lg p-3 mb-4 bg-body-tertiary">
+        <div class="row mb-3">
+            <label for="first_name" class="col-sm-2 col-form-label">First name</label>
+            <div class="col-sm-4">
+            {{ form.first_name }}
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="last_name" class="col-lg-2 col-form-label">Last name</label>
+            <div class="col-sm-4">
+            {{ form.last_name }}
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="phone" class="col-lg-2 col-form-label">Phone</label>
+            <div class="col-sm-4">
+            {{ form.phone }}
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="email" class="col-lg-2 col-form-label">Email</label>
+            <div class="col-sm-4">
+            {{ form.email }}
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="birthday" class="col-lg-2 col-form-label">Birthday</label>
+            <div class="col-sm-4">
+            {{ form.birthday }}
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="image" class="col-lg-2 col-form-label">Image</label>
+            <div class="col-sm-4">
+            {{ form.image }}
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="comment" class="col-lg-2 col-form-label">Comment</label>
+            <div class="col-sm-4">
+            {{ form.comment }}
+            </div>
+        </div>
+    </div>
     <input id="submit" type="submit" value="Submit" class="btn btn-success">
 </form>
 {% endblock %}
