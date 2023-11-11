@@ -7,7 +7,7 @@
 {% block content %}
 <form action="" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-    <table class="table table-hover text-dark">
+    <table class="table table-hover text-dark shadow-sm p-3 mb-4 bg-body-tertiary">
         {{ form }}
     </table>
     <input id="submit" type="submit" value="Submit" class="btn btn-success">
