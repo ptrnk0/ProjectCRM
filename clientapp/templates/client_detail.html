@@ -1,0 +1,17 @@
+{% extends 'client_main.html' %}
+
+{% block bt_all %}
+<button onclick="window.location.href='{% url 'ClientList' %}';" type="button" class="btn btn-secondary">All Clients</button>
+{% endblock %}
+
+{% block content %}
+<div class="shadow-lg p-3 mb-4 bg-body-tertiary">
+<h1>{{object.first_name}} {{object.last_name}}</h1>
+<p>Phone number: {{object.phone}}</p>
+<p>Email: {{object.email}}</p>
+<p>Birthday: {{object.birthday|date:"d-m-Y"}}</p>
+<p>Comments: {{object.comment}}</p>
+</div>
+<button onclick="window.location.href='{% url 'ClientUpdate' object.id %}';" type="button" class="btn btn-primary">Update client</button>
+<button onclick="window.location.href='{% url 'ClientDelete' object.id %}';" type="button" class="btn btn-danger">Delete client</button>
+{% endblock %}

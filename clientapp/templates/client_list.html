@@ -1,20 +1,26 @@
 {% extends 'client_main.html' %}
 
 {% block bt_all %}
-<button onclick="window.location.href='{% url 'client' 'all_clients' %}';" type="button" class="btn btn-primary">All Clients</button>
+<button onclick="window.location.href='{% url 'ClientList' %}';" type="button" class="btn btn-primary">All Clients</button>
 {% endblock %}
 
 {% block content %}
 <nav aria-label="Page navigation example">
     <ul class="pagination">
-      <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-      <li class="page-item"><a class="page-link" href="#">1</a></li>
-      <li class="page-item"><a class="page-link" href="#">2</a></li>
-      <li class="page-item"><a class="page-link" href="#">3</a></li>
-      <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        {% if page_obj.has_previous %}        
+        <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a></li>
+        {% endif %}
+        
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+        </span>
+        
+        {% if page_obj.has_next %}
+        <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a></li>
+        {% endif %}
     </ul>
-  </nav>
-<form action="{% url 'client' 'delete_client' %}" method="post">
+</nav>
+<form action="{% url 'ClientDel' %}" method="post">
     {% csrf_token %}
     <table class="table table-hover text-center collapsing shadow-lg p-3 mb-4 bg-body-tertiary">
         <tr>
@@ -26,8 +32,8 @@
             <th>Birthday</th>
             <th>Comment</th>
         </tr>
-        {% for item in form %}
-        <tr>
+        {% for item in object_list %}
+        <tr type="Submit" class='clickable-row' onclick="window.location='{% url 'ClientDetail' item.id %}'">
             <td><input type="checkbox" class="form-check-input" name="id" value ="{{ item.id }}"></td>
             <td>{{item.first_name}}</td>
             <td>{{item.last_name}}</td>

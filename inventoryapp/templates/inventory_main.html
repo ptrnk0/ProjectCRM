@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block inventory %}
-<a class="nav-link active" aria-current="page" href="{% url 'inventory' 'commodity' %}">Inventory</a>
+<a class="nav-link active" aria-current="page" href="{% url 'CommodityList' %}">Inventory</a>
 {% endblock %}
 
 {% block container %}
@@ -13,16 +13,16 @@
     <div class="col-lg-3">
         <div id="buttons" class="row-cols-2">
             {% block commodity %}
-            <button onclick="window.location.href='{% url 'inventory' 'commodity' %}';" type="button" class="btn btn-secondary">Commodity</button>
+            <button onclick="window.location.href='{% url 'CommodityCreate' %}';" type="button" class="btn btn-secondary">Commodity</button>
             {% endblock %}
             {% block order %}
-            <button onclick="window.location.href='{% url 'inventory' 'order' %}';" type="button" class="btn btn-secondary">Order</button>
+            <button onclick="window.location.href='{% url 'OrderCreate' %}';" type="button" class="btn btn-secondary">Order</button>
             {% endblock %}
             {% block com_table %}
-            <button onclick="window.location.href='{% url 'inventory' 'commodity_table' %}';" type="button" class="btn btn-secondary">Commodity Table</button>
+            <button onclick="window.location.href='{% url 'CommodityList' %}';" type="button" class="btn btn-secondary">Commodity Table</button>
             {% endblock %}
             {% block ord_table %}
-            <button onclick="window.location.href='{% url 'inventory' 'order_table' %}';" type="button" class="btn btn-secondary">Order Table</button>
+            <button onclick="window.location.href='{% url 'OrderList' %}';" type="button" class="btn btn-secondary">Order Table</button>
             {% endblock %}
         </div>
     </div>

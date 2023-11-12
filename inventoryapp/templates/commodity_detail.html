@@ -1,0 +1,15 @@
+{% extends 'inventory_main.html' %}
+
+{% block bt_all %}
+<button onclick="window.location.href='{% url 'CommodityList' %}';" type="button" class="btn btn-secondary">All Commodities</button>
+{% endblock %}
+
+{% block content %}
+<div class="shadow-lg p-3 mb-4 bg-body-tertiary">
+<h1>{{object.name}}</h1>
+<p>Price: {{object.price}}</p>
+<p>Amount: {{object.amount}}</p>
+</div>
+<button onclick="window.location.href='{% url 'CommodityUpdate' object.id %}';" type="button" class="btn btn-primary">Update commodity</button>
+<button onclick="window.location.href='{% url 'CommodityDelete' object.id %}';" type="button" class="btn btn-danger">Delete commodity</button>
+{% endblock %}

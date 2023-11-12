@@ -42,3 +42,10 @@ footer {
 #insert_table div div {
     width: 70%;
 }
+
+nav ul span {
+    text-align: justify;
+    margin-right: 1%;
+    margin-left: 1%;
+    padding-top: 5px;
+}

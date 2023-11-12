@@ -26,6 +26,6 @@ class CreateScheduleStaffForm(forms.ModelForm):
         widgets = {
             'date': forms.DateTimeInput(attrs={'type': 'date', "class": "form-control"}),
             'id_staff': forms.Select(attrs={"class": "form-select"}),
-            'start_time': forms.TimeInput(format="%H:%M", attrs={"class": "form-control"}),
-            'end_time': forms.TimeInput(format="%H:%M", attrs={"class": "form-control"})
+            'start_time': forms.TimeInput(format="%H:%M", attrs={'type': 'time', "class": "form-control"}),
+            'end_time': forms.TimeInput(format="%H:%M", attrs={'type': 'time', "class": "form-control"})
         }

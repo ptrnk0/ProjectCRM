@@ -7,6 +7,9 @@ class Commodity(models.Model):
     price = models.FloatField()
     amount = models.IntegerField()
 
+    class Meta:
+        db_table = 'Commodity'
+
     def __str__(self):
         return f'{self.name}'
 
@@ -17,6 +20,9 @@ class Order(models.Model):
     id_employee = models.ForeignKey(staff.Staff, on_delete=models.PROTECT, related_name='staff')
     amount = models.IntegerField()
     discount = models.FloatField(null=True, default=None)
+
+    class Meta:
+        db_table = 'Order'
 
     def __str__(self):
         return f'{self.date}, {self.id_commodity}, {self.id_employee}, {self.amount}, {self.discount}'
