@@ -24,7 +24,7 @@ class OrderForm(forms.ModelForm):
         fields = '__all__'
 
         widgets = {
-            'date': forms.DateTimeInput(attrs={'type': 'date', "class": "form-control"}),
+            'date': forms.DateTimeInput(attrs={'type': 'datetime-local', "class": "form-control"}),
             'id_commodity': forms.Select(attrs={"class": "form-select"}),
             'id_employee': forms.Select(attrs={"class": "form-select"}),
             'amount': forms.NumberInput(attrs={"class": "form-control"}),

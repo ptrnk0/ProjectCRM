@@ -1,0 +1,17 @@
+{% extends 'inventory_main.html' %}
+
+{% block bt_all %}
+<button onclick="window.location.href='{% url 'OrderList' %}';" type="button" class="btn btn-secondary">All Orders</button>
+{% endblock %}
+
+{% block content %}
+<div class="shadow-lg p-3 mb-4 bg-body-tertiary">
+<h1>{{object.date}}</h1>
+<p>Commodity: {{object.id_commodity}}</p>
+<p>Staff: {{object.id_employee}}</p>
+<p>Amount: {{object.amount}}</p>
+<p>Discount: {{object.discount}}</p>
+</div>
+<button onclick="window.location.href='{% url 'OrderUpdate' object.id %}';" type="button" class="btn btn-primary">Update order</button>
+<button onclick="window.location.href='{% url 'OrderDelete' object.id %}';" type="button" class="btn btn-danger">Delete order</button>
+{% endblock %}

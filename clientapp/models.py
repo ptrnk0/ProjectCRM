@@ -14,5 +14,8 @@ class Client(models.Model):
     comment = models.CharField(max_length=150, blank=True, default='')
     image = models.ImageField(upload_to=user_directory_path, blank=True, default='')
 
+    class Meta:
+        db_table = 'Client'
+
     def __str__(self) -> str:
         return f'{self.first_name}, {self.last_name}, {self.phone}, {self.email}, {self.birthday}, {self.comment}'

@@ -5,18 +5,18 @@
 {% endblock %}
 
 {% block client %}
-<a class="nav-link active" aria-current="page" href="{% url 'client' 'all_clients' %}">Client</a>
+<a class="nav-link active" aria-current="page" href="{% url 'ClientList' %}">Client</a>
 {% endblock %}
 
 {% block container %}
-<div id="third_row" class="row">
+<div id="third_row" class="row align-items-start">
     <div class="col-lg-3">
         <p id="buttons" class="row-cols-2">
             {% block bt_all %}
-            <button onclick="window.location.href='{% url 'client' 'all_clients' %}';" type="button" class="btn btn-secondary">All Clients</button>
+            <button onclick="window.location.href='{% url 'ClientList' %}';" type="button" class="btn btn-secondary">All Clients</button>
             {% endblock %}
             {% block bt_ins %}
-            <button onclick="window.location.href='{% url 'client' 'insert_client' %}';" type="button" class="btn btn-secondary">Insert Client</button>
+            <button onclick="window.location.href='{% url 'ClientCreate' %}';" type="button" class="btn btn-secondary">Insert Client</button>
             {% endblock %}
         </p>
     </div>
