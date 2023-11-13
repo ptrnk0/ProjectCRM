@@ -63,7 +63,7 @@ class CommodityDetail(DetailView):
 
 class CommodityUpdate(UpdateView):
     model = Commodity
-    fields = '__all__'
+    form_class = forms.ComodityForm
     success_url = '/commodity/list/'
     template_name = 'commodity_update_form.html'
 
@@ -99,7 +99,7 @@ class OrderDetail(DetailView):
 
 class OrderUpdate(UpdateView):
     model = Order
-    fields = '__all__'
+    form_class = forms.OrderForm
     success_url = '/order/list/'
     template_name = 'order_update_form.html'
 

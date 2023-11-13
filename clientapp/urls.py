@@ -6,7 +6,7 @@ from .views import ClientCreate, ClientList, ClientDetail, ClientUpdate, ClientD
 
 urlpatterns = [
     
-    path('client/delete_client/', login_required(views.clientDelete), name='ClientDel'),
+    # path('client/delete_client/', login_required(views.clientDelete), name='ClientDel'),
     path('client/create/', login_required(ClientCreate.as_view()), name = 'ClientCreate'),
     path('client/list/', login_required(ClientList.as_view()), name = 'ClientList'),
     path('client/detail/<int:pk>', login_required(ClientDetail.as_view()), name = 'ClientDetail'),

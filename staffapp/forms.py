@@ -14,7 +14,7 @@ class CreateStaffForm(forms.ModelForm):
             'email': forms.EmailInput(attrs={"class": "form-control"}),
             'phone': forms.TextInput(attrs={"class": "form-control"}),
             'job_title': forms.TextInput(attrs={"class": "form-control"}),
-            'access_level': forms.NumberInput(attrs={"class": "form-control"}),
+            'access_level': forms.NumberInput(attrs={"class": "form-control", "min": "1", "max": "2"}),
         }
 
 

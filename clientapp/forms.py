@@ -13,7 +13,7 @@ class ClientForm(forms.ModelForm):
             'birthday': forms.DateTimeInput(attrs={'type': 'date', "class": "form-control"}),
             'email': forms.EmailInput(attrs={"class": "form-control"}),
             'phone': forms.TextInput(attrs={"class": "form-control"}),
-            'image': forms.FileInput(attrs={"class": "form-control"}),
+            'image': forms.FileInput(attrs={"class": "form-control", "type": "file", "accept": "image/png, image/jpeg", "multiple": ""}),
         }
 
 

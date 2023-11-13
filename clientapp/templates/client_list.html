@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block content %}
+
 <nav aria-label="Page navigation example">
     <ul class="pagination">
         {% if page_obj.has_previous %}        
@@ -20,30 +21,26 @@
         {% endif %}
     </ul>
 </nav>
-<form action="{% url 'ClientDel' %}" method="post">
-    {% csrf_token %}
-    <table class="table table-hover text-center collapsing shadow-lg p-3 mb-4 bg-body-tertiary">
-        <tr>
-            <th>Select</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Phone</th>
-            <th>Email</th>
-            <th>Birthday</th>
-            <th>Comment</th>
-        </tr>
-        {% for item in object_list %}
-        <tr type="Submit" class='clickable-row' onclick="window.location='{% url 'ClientDetail' item.id %}'">
-            <td><input type="checkbox" class="form-check-input" name="id" value ="{{ item.id }}"></td>
-            <td>{{item.first_name}}</td>
-            <td>{{item.last_name}}</td>
-            <td>{{item.phone}}</td>
-            <td>{{item.email}}</td>
-            <td>{{item.birthday|date:"d-m-Y"}}</td>
-            <td>{{item.comment}}</td>
-        </tr>
-        {% endfor %}
-    </table>
-    <input type="submit" class="btn btn-danger" value="Delete Client(s)"/>
-</form>
+
+<table class="table table-hover text-center collapsing shadow-lg p-3 mb-4 bg-body-tertiary">
+    <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Birthday</th>
+        <th>Comment</th>
+    </tr>
+    {% for item in object_list %}
+    <tr type="button" class='clickable-row' onclick="window.location='{% url 'ClientDetail' item.id %}'">
+        <td>{{item.first_name}}</td>
+        <td>{{item.last_name}}</td>
+        <td>{{item.phone}}</td>
+        <td>{{item.email}}</td>
+        <td>{{item.birthday|date:"d-m-Y"}}</td>
+        <td>{{item.comment}}</td>
+    </tr>
+    {% endfor %}
+</table>
+
 {% endblock %}

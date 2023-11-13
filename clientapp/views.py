@@ -52,7 +52,7 @@ class ClientDetail(DetailView):
 
 class ClientUpdate(UpdateView):
     model = Client
-    fields = '__all__'
+    form_class = forms.ClientForm
     success_url = '/client/list/'
     template_name = 'client_update_form.html'
 
@@ -62,13 +62,14 @@ class ClientDelete(DeleteView):
     success_url = '/client/list/'
     template_name = 'client_confirm_delete.html'
 
-def clientDelete(request):
-    try:
-        for i in request.POST.copy().pop('id'):
-            Client.objects.get(id=int(i)).delete()
-        rendered = render_to_string('client_deleted.html')
-        return HttpResponse(rendered)
-    except KeyError:
-        data = Client.objects.all()
-        context = {'form': data}
-        return render(request, 'clients_db.html', context)
+
+# def clientDelete(request):
+#     try:
+#         for i in request.POST.copy().pop('id'):
+#             Client.objects.get(id=int(i)).delete()
+#         rendered = render_to_string('client_deleted.html')
+#         return HttpResponse(rendered)
+#     except KeyError:
+#         data = Client.objects.all()
+#         context = {'form': data}
+#         return render(request, 'clients_db.html', context)

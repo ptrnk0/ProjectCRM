@@ -49,3 +49,7 @@ nav ul span {
     margin-left: 1%;
     padding-top: 5px;
 }
+
+#nav_row #ul_row {
+    margin-left: 8%;
+}
