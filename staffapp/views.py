@@ -1,18 +1,22 @@
 from django.shortcuts import render
+from django.views.generic import ListView, CreateView
 from rest_framework import generics
-
 from .models import Staff
 from .forms import CreateStaffForm, CreateScheduleStaffForm
 from .serializers import StaffSerializer
 
 
-def all_staff_view(request):
-    if request.method == 'POST':
-        Staff.objects.filter(id=request.POST.get('id')).delete()
-        st = Staff.objects.all()
-        return render(request, 'staffapp/all_staff.html', {'staff': st})
-    st = Staff.objects.all()
-    return render(request, 'staffapp/all_staff.html', {'staff': st})
+class StaffList(ListView):
+    model = Staff
+    template_name = 'staffapp/all_staff.html'
+    success_url = 'all_staff/'
+    paginate_by = 10
+
+
+# class StaffCreate(CreateView):
+#     model = Staff
+#     template_name = 'staffapp/create_staff.html'
+#     success_url =
 
 
 def create_staff_view(request):

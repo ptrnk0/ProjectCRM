@@ -1,7 +1,6 @@
 from django.shortcuts import render
 from django.template.loader import render_to_string
 from clientapp import forms
-# from django.http import HttpResponse
 from clientapp.models import Client
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.list import ListView
@@ -15,7 +14,7 @@ from django.views.generic.detail import DetailView
 #         context = {'form': data}
 #         return render(request, 'clients_db.html', context)
 #     elif subClient == 'insert_client':
-#         form = forms.ClientForm(initial={'phone': '+380'})
+#         form = forms.ClientForm(initial={'phone': '380 '})
 #         if request.method == 'POST':
 #             form = forms.ClientForm(request.POST, request.FILES)
 #             if form.is_valid():
@@ -33,7 +32,7 @@ from django.views.generic.detail import DetailView
 class ClientCreate(CreateView):
     model = Client
     form_class = forms.ClientForm
-    initial = {'phone': '380 '}
+    initial = {'phone': '+380'}
     template_name = 'client_create.html'
     success_url = '/client/create/'
 
