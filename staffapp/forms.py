@@ -10,7 +10,7 @@ class CreateStaffForm(forms.ModelForm):
         widgets = {
             'first_name': forms.TextInput(attrs={"class": "form-control"}),
             'last_name': forms.TextInput(attrs={"class": "form-control"}),
-            'sex': forms.TextInput(attrs={"class": "form-control"}),
+            'sex': forms.Select(attrs={"class": "form-select"}),
             'email': forms.EmailInput(attrs={"class": "form-control"}),
             'phone': forms.TextInput(attrs={"class": "form-control"}),
             'job_title': forms.TextInput(attrs={"class": "form-control"}),

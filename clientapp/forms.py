@@ -12,7 +12,7 @@ class ClientForm(forms.ModelForm):
             'comment': forms.Textarea(attrs={"cols": 30, "rows": 3, "class": "form-control"}),
             'birthday': forms.DateTimeInput(attrs={'type': 'date', "class": "form-control"}),
             'email': forms.EmailInput(attrs={"class": "form-control"}),
-            'phone': forms.TextInput(attrs={"class": "form-control"}),
+            'phone': forms.TextInput(attrs={"class": "form-control", "pattern": "380\s[0-9]{2}\s[0-9]{3}-[0-9]{2}-[0-9]{2}"}),
             'image': forms.FileInput(attrs={"class": "form-control", "type": "file", "accept": "image/png, image/jpeg", "multiple": ""}),
         }
 

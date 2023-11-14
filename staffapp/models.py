@@ -3,9 +3,11 @@ from django.db import models
 
 
 class Staff(models.Model):
+    gender = [('man', 'man'), ('woman', 'woman')]
+
     first_name = models.CharField(max_length=15)
     last_name = models.CharField(max_length=15)
-    sex = models.CharField(max_length=15)
+    sex = models.CharField(max_length=15, choices=gender, default='woman')
     email = models.CharField(max_length=30, blank=True, default='')
     phone = models.CharField(max_length=15)
     job_title = models.CharField(max_length=15)

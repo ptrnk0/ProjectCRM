@@ -29,4 +29,5 @@ urlpatterns = [
     path('', login_required(all_staff_view)),
     path('login/', login_view, name='loginSite'),
     path('logout/', logout_view, name='logoutSite'),
+    path('api/', include('ClientListAPI.urls')),
 ]
