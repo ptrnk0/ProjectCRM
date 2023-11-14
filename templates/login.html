@@ -12,6 +12,9 @@
             <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
             <label for="floatingPassword" class="form-label">Password</label>
         </div>
+        <div>
+            <input type="hidden" name="return_to" value="{{ return_to_value }}">
+        </div>
         <input type="submit" class="btn btn-primary" value="Log in">
     </form>
 </div>
