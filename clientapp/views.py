@@ -32,7 +32,7 @@ from django.views.generic.detail import DetailView
 class ClientCreate(CreateView):
     model = Client
     form_class = forms.ClientForm
-    initial = {'phone': '+380'}
+    initial = {'phone': '380 '}
     template_name = 'client_create.html'
     success_url = '/client/create/'
 
