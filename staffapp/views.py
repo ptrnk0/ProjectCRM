@@ -1,6 +1,9 @@
 from django.shortcuts import render
+from rest_framework import generics
+
 from .models import Staff
 from .forms import CreateStaffForm, CreateScheduleStaffForm
+from .serializers import StaffSerializer
 
 
 def all_staff_view(request):
@@ -30,3 +33,8 @@ def create_schedule_staff(request):
         if form.is_valid():
             form.save()
     return render(request, 'staffapp/create_schedule_staff.html', context)
+
+
+class StaffAPIView(generics.ListCreateAPIView):
+    queryset = Staff.objects.all()
+    serializer_class = StaffSerializer
