@@ -30,4 +30,5 @@ urlpatterns = [
     path('login/', login_view, name='loginSite'),
     path('logout/', logout_view, name='logoutSite'),
     path('api/', include('ClientListAPI.urls')),
+    path('__debug__/', include('debug_toolbar.urls')),
 ]
