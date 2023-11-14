@@ -14,7 +14,7 @@ from django.views.generic.detail import DetailView
 #         context = {'form': data}
 #         return render(request, 'clients_db.html', context)
 #     elif subClient == 'insert_client':
-#         form = forms.ClientForm(initial={'phone': '+380'})
+#         form = forms.ClientForm(initial={'phone': '380 '})
 #         if request.method == 'POST':
 #             form = forms.ClientForm(request.POST, request.FILES)
 #             if form.is_valid():
