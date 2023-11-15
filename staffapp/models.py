@@ -7,7 +7,7 @@ class Staff(models.Model):
 
     first_name = models.CharField(max_length=15)
     last_name = models.CharField(max_length=15)
-    sex = models.CharField(max_length=15, choices=gender, default='woman')
+    sex = models.CharField(max_length=15, choices=gender)
     email = models.CharField(max_length=30, blank=True, default='')
     phone = models.CharField(max_length=15)
     job_title = models.CharField(max_length=15)

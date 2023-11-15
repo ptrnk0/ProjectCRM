@@ -1,42 +1,47 @@
-from django.shortcuts import render
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView, CreateView, DetailView, DeleteView, UpdateView
 from rest_framework import generics
-from .models import Staff
+from .models import Staff, Schedule
 from .forms import CreateStaffForm, CreateScheduleStaffForm
 from .serializers import StaffSerializer
 
 
-class StaffList(ListView):
+class ListStaffView(ListView):
     model = Staff
-    template_name = 'staffapp/all_staff.html'
+    template_name = 'staffapp/staff_list.html'
     success_url = 'all_staff/'
     paginate_by = 10
 
 
-# class StaffCreate(CreateView):
-#     model = Staff
-#     template_name = 'staffapp/create_staff.html'
-#     success_url =
+class CreateStaffView(CreateView):
+    model = Staff
+    form_class = CreateStaffForm
+    success_url = '/create_staff/'
+    template_name = 'staffapp/staff_create.html'
 
 
-def create_staff_view(request):
-    form = CreateStaffForm()
-    context = {'form': form}
-    if request.method == 'POST':
-        form = CreateStaffForm(request.POST)
-        if form.is_valid():
-            form.save()
-    return render(request, 'staffapp/create_staff.html', context)
+class DetailStaffView(DetailView):
+    model = Staff
+    template_name = 'staffapp/staff_detail.html'
 
 
-def create_schedule_staff(request):
-    form = CreateScheduleStaffForm()
-    context = {'form': form}
-    if request.method == 'POST':
-        form = CreateScheduleStaffForm(request.POST)
-        if form.is_valid():
-            form.save()
-    return render(request, 'staffapp/create_schedule_staff.html', context)
+class CreateScheduleStaffView(CreateView):
+    model = Schedule
+    form_class = CreateScheduleStaffForm
+    success_url = '/create_schedule/'
+    template_name = 'staffapp/schedule_staff_create.html'
+
+
+class DeleteStaffView(DeleteView):
+    model = Staff
+    success_url = '/all_staff/'
+    template_name = 'staffapp/staff_delete_confirm.html'
+
+
+class UpdateStaffView(UpdateView):
+    fields = '__all__'
+    model = Staff
+    template_name = 'staffapp/staff_update_form.html'
+    success_url = '/all_staff/'
 
 
 class StaffAPIView(generics.ListCreateAPIView):
