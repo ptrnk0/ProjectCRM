@@ -18,7 +18,7 @@
             <th>Access level</th>
         </tr>
         {% for item in object_list %}
-        <tr>
+        <tr type="button" class='clickable-row' onclick="window.location='{% url 'staff_detail' item.id %}'">
             <td>{{item.first_name}}</td>
             <td>{{item.last_name}}</td>
             <td>{{item.sex}}</td>
