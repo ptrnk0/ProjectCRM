@@ -138,6 +138,7 @@ STATICFILES_DIRS = [
     'inventoryapp/static',
     'serviceapp/static',
     'staffapp/static',
+    'static'
 ]
 
 # Default primary key field type

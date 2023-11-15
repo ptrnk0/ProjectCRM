@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from staffapp.views import StaffList
+from staffapp.views import ListStaffView
 from django.contrib.auth.decorators import login_required, permission_required
 from CRM.views import login_view, logout_view
 
@@ -26,7 +26,7 @@ urlpatterns = [
     path('', include('inventoryapp.urls')),
     path('', include('serviceapp.urls')),
     path('', include('staffapp.urls')),
-    path('', login_required(StaffList.as_view())),
+    path('', login_required(ListStaffView.as_view())),
     path('login/', login_view, name='loginSite'),
     path('logout/', logout_view, name='logoutSite'),
     path('api/', include('ClientListAPI.urls')),
