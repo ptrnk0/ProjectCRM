@@ -85,6 +85,11 @@ nav ul span {
     max-width: none;
 }
 
-div {
-    flex
+svg {
+    cursor: pointer;
+}
+
+h2 span {
+    margin-right: 2%;
+    padding-bottom: 1%;
 }
