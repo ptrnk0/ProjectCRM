@@ -1,0 +1,26 @@
+{% extends 'staffapp/staff_main.html' %}
+
+{% block bt_all %}
+<button onclick="window.location.href='{% url 'all_staff' %}';" type="button" class="btn btn-secondary">All Staff</button>
+{% endblock %}
+
+{% block content %}
+<table class="table table-hover text-center collapsing shadow-lg p-3 mb-4 bg-body-tertiary">
+    <h2>{{ data_staff.first_name }} {{ data_staff.last_name }}</h2>
+    <tr>
+        <th>Date</th>
+        <th>Start time</th>
+        <th>End time</th>
+    </tr>
+    {% for item in data_schedule %}
+    <tr>
+        <td>{{ item.date }}</td>
+        <td>{{ item.start_time }}</td>
+        <td>{{ item.end_time }}</td>
+    </tr>
+    {% endfor %}
+</table>
+<button onclick="window.location.href='{% url 'update_staff' data_staff.id %}';" type="button" class="btn btn-primary">Update staff</button>
+<button onclick="window.location.href='{% url 'schedule_staff' data_staff.id %}';" type="button" class="btn btn-primary">Schedule staff</button>
+<button onclick="window.location.href='{% url 'delete_staff' data_staff.id %}';" type="button" class="btn btn-danger">Delete staff</button>
+{% endblock %}
