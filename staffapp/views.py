@@ -1,3 +1,4 @@
+from django.shortcuts import render
 from django.views.generic import ListView, CreateView, DetailView, DeleteView, UpdateView
 from rest_framework import generics
 from .models import Staff, Schedule
@@ -42,6 +43,13 @@ class UpdateStaffView(UpdateView):
     model = Staff
     template_name = 'staffapp/staff_update_form.html'
     success_url = '/all_staff/'
+
+
+def detail_schedule_staff(request, id_staff):
+    schedule = Schedule.objects.filter(id_staff=id_staff)
+    staff = Staff.objects.get(id=id_staff)
+    return render(request, 'staffapp/detail_schedule_staff.html',
+                  {'data_schedule': schedule, 'data_staff': staff})
 
 
 class StaffAPIView(generics.ListCreateAPIView):

@@ -14,5 +14,6 @@
     <p>Access level: {{object.access_level}}</p>
 </div>
 <button onclick="window.location.href='{% url 'update_staff' object.id %}';" type="button" class="btn btn-primary">Update staff</button>
+<button onclick="window.location.href='{% url 'schedule_staff' object.id %}';" type="button" class="btn btn-primary">Schedule staff</button>
 <button onclick="window.location.href='{% url 'delete_staff' object.id %}';" type="button" class="btn btn-danger">Delete staff</button>
 {% endblock %}
