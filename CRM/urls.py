@@ -16,6 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+
+from CRM import views
 from staffapp.views import ListStaffView
 from django.contrib.auth.decorators import login_required, permission_required
 from CRM.views import login_view, logout_view
@@ -30,5 +32,6 @@ urlpatterns = [
     path('login/', login_view, name='loginSite'),
     path('logout/', logout_view, name='logoutSite'),
     path('api/', include('ClientListAPI.urls')),
+    path('register/', views.register, name='register'),
     path('__debug__/', include('debug_toolbar.urls')),
 ]

@@ -5,8 +5,17 @@
 {% endblock %}
 
 {% block content %}
+<h2>
+<span>
+    <svg xmlns="http://www.w3.org/2000/svg" width="33" height="30" fill="currentColor" class="bi bi-arrow-left-circle" viewBox="0 0 16 16" onclick="window.history.back()">
+        <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+    </svg>
+
+</span>
+    {{ data_staff.first_name }} {{ data_staff.last_name }}
+</h2>
+
 <table class="table table-hover text-center collapsing shadow-lg p-3 mb-4 bg-body-tertiary">
-    <h2>{{ data_staff.first_name }} {{ data_staff.last_name }}</h2>
     <tr>
         <th>Date</th>
         <th>Start time</th>
@@ -20,7 +29,4 @@
     </tr>
     {% endfor %}
 </table>
-<button onclick="window.location.href='{% url 'update_staff' data_staff.id %}';" type="button" class="btn btn-primary">Update staff</button>
-<button onclick="window.location.href='{% url 'schedule_staff' data_staff.id %}';" type="button" class="btn btn-primary">Schedule staff</button>
-<button onclick="window.location.href='{% url 'delete_staff' data_staff.id %}';" type="button" class="btn btn-danger">Delete staff</button>
 {% endblock %}
