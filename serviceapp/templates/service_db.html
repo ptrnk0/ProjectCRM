@@ -15,9 +15,9 @@
         </tr>
         {% for item in form %}
         <tr>
-            <th><input type="checkbox" class="form-check-input" name="id" value ="{{ item.id }}"></th>
-            <th>{{item.name}}</th>
-            <th>{{item.id_resource}}</th>
+            <td><input type="checkbox" class="form-check-input" name="id" value ="{{ item.id }}"></td>
+            <td>{{item.name}}</td>
+            <td>{{item.id_resource}}</td>
         </tr>
         {% endfor %}
     </table>

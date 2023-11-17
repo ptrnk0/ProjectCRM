@@ -19,3 +19,7 @@ class Client(models.Model):
 
     def __str__(self) -> str:
         return f'{self.first_name}, {self.last_name}, {self.phone}, {self.email}, {self.birthday}, {self.comment}'
+
+    @property
+    def full_name(self):
+        return f'{self.first_name} {self.last_name}'

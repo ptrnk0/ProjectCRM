@@ -28,10 +28,10 @@
         <th>Amount</th>
     </tr>
     {% for item in object_list %}
-    <tr type="Submit" class='clickable-row' onclick="window.location='{% url 'CommodityDetail' item.id %}'">
-        <th>{{item.name}}</th>
-        <th>{{item.price}}</th>
-        <th>{{item.amount}}</th>
+    <tr class='clickable-row' onclick="window.location='{% url 'CommodityDetail' item.id %}'">
+        <td>{{item.name}}</td>
+        <td>{{item.price}}</td>
+        <td>{{item.amount}}</td>
     </tr>
     {% endfor %}
 </table>
