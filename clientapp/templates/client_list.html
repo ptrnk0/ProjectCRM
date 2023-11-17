@@ -24,17 +24,15 @@
 
 <table class="table table-hover text-center collapsing shadow-lg p-3 mb-4 bg-body-tertiary">
     <tr>
-        <th>First Name</th>
-        <th>Last Name</th>
+        <th>Full Name</th>
         <th>Phone</th>
         <th>Email</th>
         <th>Birthday</th>
         <th>Comment</th>
     </tr>
     {% for item in object_list %}
-    <tr type="button" class='clickable-row' onclick="window.location='{% url 'ClientDetail' item.id %}'">
-        <td>{{item.first_name}}</td>
-        <td>{{item.last_name}}</td>
+    <tr class='clickable-row' onclick="window.location='{% url 'ClientDetail' item.id %}'">
+        <td>{{item.full_name}}</td>
         <td>{{item.phone}}</td>
         <td>{{item.email}}</td>
         <td>{{item.birthday|date:"d-m-Y"}}</td>

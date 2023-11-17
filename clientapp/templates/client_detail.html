@@ -6,7 +6,7 @@
 
 {% block content %}
 <div class="shadow-lg p-3 mb-4 bg-body-tertiary">
-    <h2>{{object.first_name}} {{object.last_name}}</h2>
+    <h2>{{object.full_name}}</h2>
     <p>Phone number: {{object.phone}}</p>
     <p>Email: {{object.email}}</p>
     <p>Birthday: {{object.birthday|date:"d-m-Y"}}</p>

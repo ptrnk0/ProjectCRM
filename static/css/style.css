@@ -3,6 +3,16 @@
     margin-bottom: 2%;
 }
 
+/* #buttons button:active {
+    background-color: blue;
+    transform: scale(0.99);
+} */
+
+#buttons button:hover {
+    background: #ef615d;
+    color: white;
+}
+
 #submit {
     margin-top: 2%;
 }
@@ -12,14 +22,14 @@
     margin-bottom: 10%;
 }
 
-.container {
-    margin-top: 3%;
-    margin-bottom: 3%;
+main {
+    padding-top: 3%;
+    padding-bottom: 3%;
 }
 
 header {
-    margin-left: 2%;
-    margin-top: 2%;
+    padding-left: 2%;
+    padding-right: 2%;
 }
 
 footer {
@@ -51,5 +61,30 @@ nav ul span {
 }
 
 #nav_row #ul_row {
-    margin-left: 8%;
+    padding-left: 8%;
+}
+
+.clickable-row {
+    cursor: pointer;
+}
+
+.clickable-row:hover {
+    background-color: #ef615d;
+}
+
+.clickable-row:active {
+    background-color: red;
+    transform: scale(0.99);
+}
+
+#cont {
+    padding-left: 8%;
+    padding-right: 8%;
+    margin-left: 0%;
+    margin-right: 0%;
+    max-width: none;
+}
+
+div {
+    flex
 }
