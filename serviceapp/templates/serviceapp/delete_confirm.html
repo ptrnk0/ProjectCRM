@@ -5,7 +5,7 @@
     {% csrf_token %}   
     <div id="delete_confirmation" class="shadow-lg p-3 mb-4 bg-body-tertiary">
 
-                <p>Are you sure you want to delete "{{ delete_res }}"?</p>
+                <p>Are you sure you want to delete "{{ delete_obj.name }}"?</p>
 
     </div>
     <input id="submit" type="submit" value="Confirm" class="btn btn-success">

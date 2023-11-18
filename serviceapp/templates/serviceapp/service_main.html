@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Service</title>
+{% endblock %}
+
+{% block service %}
+<a class="nav-link active" aria-current="page" href="{% url 'list_service' %}">Service</a>
+{% endblock %}
+
+{% block container %}
+<div id="third_row" class="row">
+    <div class="col-lg-3">
+        <div id="buttons" class="row-cols-2">
+            {% block all_service %}
+            <button onclick="window.location.href='{% url 'list_service' %}';" type="button" class="btn btn-secondary">All service</button>
+            {% endblock %}
+            {% block all_resource %}
+            <button onclick="window.location.href='{% url 'list_resource' %}';" type="button" class="btn btn-secondary">All resource</button>
+            {% endblock %}
+            {% block create_service %}
+            <button onclick="window.location.href= '{% url 'create_service' %}';" type="button" class="btn btn-secondary">Create service</button>
+            {% endblock %}
+            {% block create_resource %}
+            <button onclick="window.location.href='{% url 'create_resource' %}';" type="button" class="btn btn-secondary">Create resource</button>
+            {% endblock %}
+        </div>
+    </div>
+    <div class="col-lg-9">
+{% block content %}
+
+{% endblock %}
+    </div>
+</div>
+{% endblock %}

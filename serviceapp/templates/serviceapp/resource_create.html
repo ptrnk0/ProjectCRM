@@ -1,21 +1,21 @@
-{% extends 'service_main.html' %}
+{% extends 'serviceapp/service_main.html' %}
 
-{% block resource %}
-<button onclick="window.location.href='{% url 'service' 'resource' %}';" type="button" class="btn btn-primary">Resource</button>
+{% block create_resource %}
+<button onclick="window.location.href='{% url 'create_resource' %}';" type="button" class="btn btn-primary">Create resource</button>
 {% endblock %}
 
 {% block content %}
-<form action="" method="POST">
+<form method="post">
     {% csrf_token %}
     <div id="insert_table" class="shadow-lg p-3 mb-4 bg-body-tertiary">
         <div class="row mb-3">
-            <label for="first_name" class="col-lg-3 col-form-label">Name</label>
+            <label for="name" class="col-lg-3 col-form-label">Name</label>
             <div class="col-sm-4">
             {{ form.name }}
             </div>
         </div>
         <div class="row mb-3">
-            <label for="last_name" class="col-lg-3 col-form-label">Amount</label>
+            <label for="amount" class="col-lg-3 col-form-label">Amount</label>
             <div class="col-sm-4">
             {{ form.amount }}
             </div>
