@@ -1,7 +1,10 @@
-console.log(2 + 2)
-console.log(2 > 3)
-console.log(10 == 10)
+function formatPhoneNumber(phoneNumberString) {
+    var cleaned = ('' + phoneNumberString).replace(/\D/g, '');
+    var match = cleaned.match(/^(\d{2})(\d{3})(\d{2})(\d{2})$/);
+    if (match) {
+      return 380 + ' ' + match[1] + ' ' + match[2] + '-' + match[3] + '-' + match[4];
+    }
+    return null;
+  }
 
-console.log(1 == 1 && 2 < 5)
-var document = 'client_list.html'
-document.querySelector('div')
+  console.log(formatPhoneNumber(996300058));
