@@ -29,3 +29,13 @@ class CreateScheduleStaffForm(forms.ModelForm):
             'start_time': forms.TimeInput(attrs={'type': 'time', "class": "form-control"}),
             'end_time': forms.TimeInput(attrs={'type': 'time', "class": "form-control"})
         }
+
+
+class FilterCheduleForm(forms.ModelForm):
+    class Meta:
+        model = Schedule
+        fields = ('date',)
+
+        widgets = {
+            'date': forms.DateTimeInput(attrs={'type': 'date', "class": "form-control"})
+        }
