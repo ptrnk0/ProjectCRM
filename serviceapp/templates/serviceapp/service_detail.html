@@ -12,4 +12,6 @@
     <h2>{{ detail_service.name }}</h2>
 </div>
 <button onclick="window.location.href='{% url 'delete_service' object.id %}';" type="button" class="btn btn-danger">Delete service</button>
+<button onclick="window.location.href='{% url 'resource_list_for_service' object.id %}';" type="button" class="btn btn-success">List resource</button>
+<button onclick="window.location.href='{% url 'add_resource_for_service' %}';" type="button" class="btn btn-success">Add resource</button>
 {% endblock %}

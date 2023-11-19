@@ -22,3 +22,14 @@ class ResourceForm(forms.ModelForm):
             'name': forms.TextInput(attrs={"class": "form-control"}),
             'amount': forms.NumberInput(attrs={"class": "form-control"}),
         }
+
+
+class AddResourceForServiceForm(forms.ModelForm):
+    class Meta:
+        model = models.Service
+        fields = '__all__'
+
+        widgets = {
+            'name': forms.Select(attrs={"class": "form-control"}),
+            'id_resource': forms.Select(attrs={"class": "form-select"}),
+        }

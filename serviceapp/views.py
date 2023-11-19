@@ -5,7 +5,7 @@
 # from django.http import HttpResponse
 from django.views.generic import ListView, DetailView, DeleteView, CreateView
 
-from serviceapp.forms import ServiceForm, ResourceForm
+from serviceapp.forms import ServiceForm, ResourceForm, AddResourceForServiceForm
 from serviceapp.models import Resource, Service
 
 
@@ -61,6 +61,25 @@ class CreateServiceView(CreateView):
     model = Service
     form_class = ServiceForm
     template_name = 'serviceapp/service_create.html'
+    success_url = '/service/list_service/'
+
+
+class ListResourceForServiceView(DetailView):
+    model = Service
+    template_name = 'serviceapp/resource_list_from_service.html'
+
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # Add in a QuerySet of all the books
+        context["resource_list"] = Resource.objects.all()
+        return context
+
+
+class AddResourceForService(CreateView):
+    model = Service
+    form_class = AddResourceForServiceForm
+    template_name = 'serviceapp/add_resource_for_service.html'
     success_url = '/service/list_service/'
 
 
