@@ -23,9 +23,9 @@
     </tr>
     {% for item in data_schedule %}
     <tr>
-        <td>{{ item.date }}</td>
-        <td>{{ item.start_time }}</td>
-        <td>{{ item.end_time }}</td>
+        <td>{{ item.date|date:"d b Y" }}</td>
+        <td>{{ item.start_time|time:"H:i" }}</td>
+        <td>{{ item.end_time|time:"H:i" }}</td>
     </tr>
     {% endfor %}
 </table>

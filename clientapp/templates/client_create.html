@@ -75,16 +75,14 @@
     }
 
     let phone = document.getElementById('id_phone');
-    phone.addEventListener('change', changHandler);
+    phone.addEventListener('input', changHandler);
 
     function changHandler(e){
         //e.preventDefault();     // This method will prevent from submitting a form, when clicking on a "Submit" button
-        console.log('hello')
-        console.log(e.target.value)
+
         var cleaned = ('' + e.target.value).replace(/\D/g, '');
         var match = cleaned.match(/^(\d{2})(\d{3})(\d{2})(\d{2})$/);
         if (match) {
-            console.log('hello world');
             phone.value = 380 + ' ' + match[1] + ' ' + match[2] + '-' + match[3] + '-' + match[4];
         }
         return null;
