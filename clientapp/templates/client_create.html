@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block content %}
-<form  action="" method="POST" enctype="multipart/form-data">
+<form  method="POST" enctype="multipart/form-data" id="form">
     {% csrf_token %}
     <div id="insert_table" class="shadow-lg p-3 mb-4 bg-body-tertiary">
         <div class="row mb-3">
@@ -21,9 +21,10 @@
             </div>
         </div>
         <div class="row mb-3">
-            <label for="phone" class="col-lg-3 col-form-label">Phone</label>
+            <label for="id_phone" class="col-lg-3 col-form-label">Phone</label>
             <div class="col-sm-4">
             {{ form.phone }}
+            <small id="phoneHelpBlock" class="form-text text-muted">Enter 9 symbols</small>
             </div>
         </div>
         <div class="row mb-3">
@@ -53,4 +54,40 @@
     </div>
     <input id="submit" type="submit" value="Submit" class="btn btn-success">
 </form>
+{% endblock %}
+
+{% block js %}
+<script>
+    const form = document.getElementById('form');
+    form.addEventListener('submit', submitHandler);
+
+    function submitHandler(e){
+        e.preventDefault();     // This method will prevent from submitting a form, when clicking on a "Submit" button
+
+        fetch(form.action, {method: 'POST', body: new FormData(form)}) //This line makes a POST request to the form's action URL. 
+        .then(response=>response.json())
+        .then(data=>{
+            if (data.message === 'success'){
+                alert('Success!');
+                form.reset()
+            }
+        })
+    }
+
+    let phone = document.getElementById('id_phone');
+    phone.addEventListener('change', changHandler);
+
+    function changHandler(e){
+        //e.preventDefault();     // This method will prevent from submitting a form, when clicking on a "Submit" button
+        console.log('hello')
+        console.log(e.target.value)
+        var cleaned = ('' + e.target.value).replace(/\D/g, '');
+        var match = cleaned.match(/^(\d{2})(\d{3})(\d{2})(\d{2})$/);
+        if (match) {
+            console.log('hello world');
+            phone.value = 380 + ' ' + match[1] + ' ' + match[2] + '-' + match[3] + '-' + match[4];
+        }
+        return null;
+    }
+</script>
 {% endblock %}

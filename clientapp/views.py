@@ -5,6 +5,7 @@ from clientapp.models import Client
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
+from django.http import JsonResponse
 # from django.views.generic import DeleteView
 
 # Create your views here.
@@ -32,10 +33,16 @@ from django.views.generic.detail import DetailView
 class ClientCreate(CreateView):
     model = Client
     form_class = forms.ClientForm
-    initial = {'phone': '380 '}
+    # initial = {'phone': '380 '}
     template_name = 'client_create.html'
     success_url = '/client/create/'
 
+    def post(self, request, *args, **kwargs):
+        super().post(request=request, args=args, kwargs=kwargs)
+        return JsonResponse({
+            'message': 'success'
+        })
+    
 
 class ClientList(ListView):
     model = Client
