@@ -1,0 +1,17 @@
+{% extends 'serviceapp/service_main.html' %}
+
+{% block service1 %}
+<button onclick="window.location.href= '{% url 'service' 'service1' %}';" type="button" class="btn btn-primary">Service</button>
+{% endblock %}
+
+{% block content %}
+<svg xmlns="http://www.w3.org/2000/svg" width="33" height="30" fill="currentColor" class="bi bi-arrow-left-circle" viewBox="0 0 16 16" onclick="window.history.back()">
+    <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+</svg>
+<div class="shadow-lg p-3 mb-4 bg-body-tertiary">
+    <h2>{{ detail_service.name }}</h2>
+</div>
+<button onclick="window.location.href='{% url 'delete_service' object.id %}';" type="button" class="btn btn-danger">Delete service</button>
+<button onclick="window.location.href='{% url 'resource_list_for_service' object.id %}';" type="button" class="btn btn-success">List resource</button>
+<button onclick="window.location.href='{% url 'add_resource_for_service' %}';" type="button" class="btn btn-success">Add resource</button>
+{% endblock %}

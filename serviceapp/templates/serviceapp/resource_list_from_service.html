@@ -1,0 +1,7 @@
+{% extends 'serviceapp/service_main.html' %}
+
+{% block content %}
+{% for item in resource_list %}
+    {{ item.name }}
+{% endfor %}
+{% endblock %}

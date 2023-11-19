@@ -1,6 +1,7 @@
 from django import forms
 from serviceapp import models
 
+
 class ServiceForm(forms.ModelForm):
     class Meta:
         model = models.Service
@@ -20,4 +21,15 @@ class ResourceForm(forms.ModelForm):
         widgets = {
             'name': forms.TextInput(attrs={"class": "form-control"}),
             'amount': forms.NumberInput(attrs={"class": "form-control"}),
+        }
+
+
+class AddResourceForServiceForm(forms.ModelForm):
+    class Meta:
+        model = models.Service
+        fields = '__all__'
+
+        widgets = {
+            'name': forms.Select(attrs={"class": "form-control"}),
+            'id_resource': forms.Select(attrs={"class": "form-select"}),
         }

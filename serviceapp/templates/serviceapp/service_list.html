@@ -1,0 +1,22 @@
+{% extends 'serviceapp/service_main.html' %}
+
+{% block all_service %}
+<button onclick="window.location.href='{% url 'list_service' %}';" type="button" class="btn btn-primary">All service</button>
+{% endblock %}
+
+{% block content %}
+{#    {% csrf_token %}#}
+    <table class="table table-hover text-center collapsing shadow-lg p-3 mb-4 bg-body-tertiary">
+        <tr>
+            <th>Name</th>
+            <th>Resource</th>
+        </tr>
+        {% for item in list_service %}
+        <tr type="button" class='clickable-row' onclick="window.location='{% url 'detail_service' item.id %}'">
+            <td>{{ item.name }}</td>
+            <td>{{ item.id_resource }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</form>
+{% endblock %}
