@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views.generic import ListView, CreateView, DetailView, DeleteView, UpdateView
 from rest_framework import generics
 from .models import Staff, Schedule
-from .forms import CreateStaffForm, CreateScheduleStaffForm
+from .forms import CreateStaffForm, CreateScheduleStaffForm, FilterCheduleForm
 from .serializers import StaffSerializer
 
 
@@ -46,10 +46,14 @@ class UpdateStaffView(UpdateView):
 
 
 def detail_schedule_staff(request, id_staff):
-    schedule = Schedule.objects.filter(id_staff=id_staff)
+    filter_schedule_form = FilterCheduleForm
     staff = Staff.objects.get(id=id_staff)
+    if request.GET:
+        schedule = Schedule.objects.filter(date__range=request.GET.getlist('date')).order_by('date')
+    else:
+        schedule = Schedule.objects.filter(id_staff=id_staff).order_by('date')
     return render(request, 'staffapp/detail_schedule_staff.html',
-                  {'data_schedule': schedule, 'data_staff': staff})
+                  {'data_schedule': schedule, 'data_staff': staff, 'form_filter': filter_schedule_form})
 
 
 class StaffAPIView(generics.ListCreateAPIView):
