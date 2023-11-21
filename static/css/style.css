@@ -13,9 +13,9 @@
     color: white;
 }
 
-#submit {
+/* #submit {
     margin-top: 2%;
-}
+} */
 
 #lists {
     margin-top: 10%;
@@ -95,7 +95,7 @@ h2 span {
 }
 
 .form_wrapper {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     max-width: 500px;
     gap: 10px;

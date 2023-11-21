@@ -1,5 +1,7 @@
 {% extends 'client_main.html' %}
 
+{% load static %}
+
 {% block bt_ins %}
 <button onclick="window.location.href='{% url 'ClientCreate' %}';" type="button" class="btn btn-primary">Insert Client</button>
 {% endblock %}
@@ -57,49 +59,6 @@
 {% endblock %}
 
 {% block js %}
-<script>
-    const form = document.getElementById('form');
-    form.addEventListener('submit', submitHandler);
-
-    function submitHandler(e){
-        e.preventDefault();     // This method will prevent from submitting a form, when clicking on a "Submit" button
-
-        fetch(form.action, {method: 'POST', body: new FormData(form)}) //This line makes a POST request to the form's action URL. 
-        .then(response=>response.json())
-        .then(data=>{
-            if (data.message === 'success'){
-                alert('Success!');
-                form.reset()
-            }
-        })
-    }
-
-    let phone = document.getElementById('id_phone');
-    phone.addEventListener('input', changHandler);
-
-    function changHandler(e){
-        if (e.inputType == 'insertText') {
-            var cleaned = ('' + e.target.value).replace(/\D/g, '');
-            var match;
-            switch (Number(cleaned)) {
-                case Number(cleaned.match(/^(\d{2})$/g)):
-                    match = cleaned.match(/^(\d{2})$/);
-                    phone.value = 38 +  ' 0' + match[1] + ' ';
-                    break;
-                case Number(cleaned.match(/^380(\d{2})(\d{3})$/g)):
-                    match = cleaned.match(/^380(\d{2})(\d{3})$/);
-                    phone.value = 38 +  ' 0' + match[1] + ' ' + match[2] + '-';
-                    break;
-                case Number(cleaned.match(/^380(\d{2})(\d{3})(\d{2})$/g)):
-                    match = cleaned.match(/^380(\d{2})(\d{3})(\d{2})$/);
-                    phone.value = 38 +  ' 0' + match[1] + ' ' + match[2] + '-' + match[3] + '-';
-                    break;
-                case Number(cleaned.match(/^380(\d{2})(\d{3})(\d{2})(\d{2})$/g)):
-                    match = cleaned.match(/^380(\d{2})(\d{3})(\d{2})(\d{2})$/);
-                    phone.value = 38 +  ' 0' + match[1] + ' ' + match[2] + '-' + match[3] + '-' + match[4];
-                    break;
-            }
-        }
-    }
-</script>
+<script type="text/javascript" src="{% static 'js/form_submiter.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/phone_number_formater.js' %}"></script>
 {% endblock %}

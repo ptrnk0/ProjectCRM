@@ -11,8 +11,18 @@ from clientapp.models import Client as ClientModel
 class ClientList(APIView):
 
     def get(self, request):
-        all_clients = ClientModel.objects.all()
-        serialized_data = ClientSerializer(all_clients, many=True)
+        clients = ClientModel.objects.all()
+        birthday_date = request.query_params.get('birthday')
+        search = request.query_params.get('search')
+        ordering = request.query_params.get('ordering')
+        if birthday_date:
+            clients = clients.filter(birthday=birthday_date)
+        if search:
+            clients = clients.filter(first_name__istartswith=search)
+        if ordering:
+            ordering_fields = ordering.split(',')
+            clients = clients.order_by(*ordering_fields)
+        serialized_data = ClientSerializer(clients, many=True)
         return Response(serialized_data.data, status.HTTP_200_OK)
     
     def post(self, request):
