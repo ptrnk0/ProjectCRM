@@ -1,7 +1,9 @@
 {% extends 'client_main.html' %}
 
+{% load static %}
+
 {% block bt_all %}
-<button onclick="window.location.href='{% url 'ClientList' %}';" type="button" class="btn btn-primary">All Clients</button>
+<button onclick="window.location.href='{% url 'ClientList' %}';" type="button" class="btn btn-outline-primary">All Clients</button>
 {% endblock %}
 
 {% block content %}
@@ -41,4 +43,8 @@
     {% endfor %}
 </table>
 
+{% endblock %}
+
+{% block js %}
+<script type="text/javascript" src="{% static 'js/search.js' %}"></script>
 {% endblock %}
