@@ -3,6 +3,7 @@
 # from django.template.loader import render_to_string
 # from serviceapp import forms
 # from django.http import HttpResponse
+from django.shortcuts import render
 from django.views.generic import ListView, DetailView, DeleteView, CreateView
 
 from serviceapp.forms import ServiceForm, ResourceForm, AddResourceForServiceForm
@@ -64,15 +65,10 @@ class CreateServiceView(CreateView):
     success_url = '/service/list_service/'
 
 
-class ListResourceForServiceView(DetailView):
-    model = Service
-    template_name = 'serviceapp/resource_list_from_service.html'
-
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["resource_list"] = Resource.objects.all()
-        return context
+def list_resource_for_service(request, id_service):
+    context = Service.objects.filter(id=id_service)
+    print(context)
+    return render(request, 'serviceapp/resource_list_from_service.html', {'resource_list': context})
 
 
 class AddResourceForService(CreateView):
