@@ -66,16 +66,26 @@ class CreateServiceView(CreateView):
 
 
 def list_resource_for_service(request, id_service):
-    context = Service.objects.filter(id=id_service)
-    print(context)
-    return render(request, 'serviceapp/resource_list_from_service.html', {'resource_list': context})
+    current_serv = Service.objects.get(id=id_service)
+    resources_list = current_serv.resources.all()
+    return render(request, 'serviceapp/resource_list_from_service.html', {'data': resources_list})
 
 
-class AddResourceForService(CreateView):
-    model = Service
-    form_class = AddResourceForServiceForm
-    template_name = 'serviceapp/add_resource_for_service.html'
-    success_url = '/service/list_service/'
+# class AddResourceForService(CreateView):
+#     model = Service
+#     form_class = AddResourceForServiceForm
+#     template_name = 'serviceapp/add_resource_for_service.html'
+#     success_url = '/service/list_service/'
+
+
+def add_resource_for_service(request, pk):
+    form = AddResourceForServiceForm
+    current_serv = Service.objects.get(id=pk)
+    if request.method == 'POST':
+        add_resource = Resource.objects.get(id=request.POST['resource'])
+        current_serv.resources.add(add_resource)
+    return render(request, 'serviceapp/add_resource_for_service.html', {'form': form})
+
 
 
 # def service_form_view(request, subDir):
