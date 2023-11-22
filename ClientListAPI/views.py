@@ -5,6 +5,7 @@ from rest_framework.views import APIView
 # from rest_framework import authentication, permissions
 from .serializers import ClientSerializer
 from clientapp.models import Client as ClientModel
+from django.core.paginator import Paginator, EmptyPage
 
 # Create your views here.
 
@@ -15,6 +16,8 @@ class ClientList(APIView):
         birthday_date = request.query_params.get('birthday')
         search = request.query_params.get('search')
         ordering = request.query_params.get('ordering')
+        perpage = request.query_params.get('perpage', default=2)
+        page = request.query_params.get('page', default = 1)
         if birthday_date:
             clients = clients.filter(birthday=birthday_date)
         if search:
@@ -22,6 +25,11 @@ class ClientList(APIView):
         if ordering:
             ordering_fields = ordering.split(',')
             clients = clients.order_by(*ordering_fields)
+        paginator = Paginator(clients, per_page=perpage)
+        try:
+            clients = paginator.page(number=page)
+        except EmptyPage:
+            clients = []
         serialized_data = ClientSerializer(clients, many=True)
         return Response(serialized_data.data, status.HTTP_200_OK)
     
