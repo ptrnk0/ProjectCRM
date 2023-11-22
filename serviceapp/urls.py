@@ -3,7 +3,7 @@ from serviceapp import views
 from django.contrib.auth.decorators import login_required
 from serviceapp.views import ListResourceView, DetailResourceView, DeleteResourceView, CreateResourceView, \
     ListServiceView, DetailServiceView, CreateServiceView, DeleteServiceView, \
-    list_resource_for_service, add_resource_for_service
+    list_resource_for_service, add_resource_for_service, create_service_view, detail_service_list_resources
 
 urlpatterns = [
     # path('service/delete_resource/', login_required(views.resourceDelete), name='delete_resource'),
@@ -14,8 +14,8 @@ urlpatterns = [
     path('service/detail_resource/<int:pk>', login_required(DetailResourceView.as_view()), name='detail_resource'),
     path('service/delete_resource/<int:pk>', login_required(DeleteResourceView.as_view()), name='delete_resource'),
     path('service/list_service/', login_required(ListServiceView.as_view()), name='list_service'),
-    path('service/create_service/', login_required(CreateServiceView.as_view()), name='create_service'),
-    path('service/detail_service/<int:pk>', login_required(DetailServiceView.as_view()), name='detail_service'),
+    path('service/create_service/', login_required(create_service_view), name='create_service'),
+    path('service/detail_service/<int:pk>', login_required(detail_service_list_resources), name='detail_service'),
     path('service/delete_service/<int:pk>', login_required(DeleteServiceView.as_view()), name='delete_service'),
     path('service/add_resource_for_service/<int:pk>', login_required(add_resource_for_service), name='add_resource_for_service'),
     # path('service/add_resource_for_service', login_required(AddResourceForService.as_view()), name='add_resource_for_service'),

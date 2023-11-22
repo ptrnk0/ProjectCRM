@@ -1,4 +1,5 @@
 {% extends 'staffapp/staff_main.html' %}
+{% load static %}
 
 {% block bt_ins %}
 <button onclick="window.location.href='{% url 'create_staff' %}';" type="button" class="btn btn-secondary">Create staff</button>
@@ -21,7 +22,7 @@
             </div>
         </div>
         <div class="row mb-3">
-            <label for="phone" class="col-lg-3 col-form-label">Sex</label>
+            <label for="id_phone" class="col-lg-3 col-form-label">Sex</label>
             <div class="col-sm-4">
             {{ form.sex }}
             </div>
@@ -53,4 +54,8 @@
     </div>
     <input id="submit" type="submit" value="Update" class="btn btn-success">
 </form>
+{% endblock %}
+
+{% block js %}
+<script type="text/javascript" src="{% static 'js/phone_number_formater.js' %}"></script>
 {% endblock %}
