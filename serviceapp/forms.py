@@ -8,8 +8,7 @@ class ServiceForm(forms.ModelForm):
         fields = '__all__'
 
         widgets = {
-            'name': forms.TextInput(attrs={"class": "form-control"}),
-            'id_resource': forms.Select(attrs={"class": "form-select"}),
+            'name': forms.TextInput(attrs={"class": "form-control"})
         }
 
 
@@ -24,12 +23,25 @@ class ResourceForm(forms.ModelForm):
         }
 
 
-class AddResourceForServiceForm(forms.ModelForm):
-    class Meta:
-        model = models.Service
-        fields = '__all__'
+# class AddResourceForServiceForm(forms.ModelForm):
+#     class Meta:
+#         model = models.Service
+#         fields = '__all__'
+#
+#         widgets = {
+#             'name': forms.Select(attrs={"class": "form-control"}),
+#             'resources': forms.SelectMultiple(attrs={"class": "form-select"}),
+#         }
 
-        widgets = {
-            'name': forms.Select(attrs={"class": "form-control"}),
-            'id_resource': forms.Select(attrs={"class": "form-select"}),
-        }
+
+class CustomMMCF(forms.ModelMultipleChoiceField):
+    def label_from_instance(self, resource):
+        return '%s' % resource.name
+
+
+
+class AddResourceForServiceForm(forms.Form):
+    resource = CustomMMCF(
+        queryset=models.Resource.objects.all(),
+        widget=forms.Select
+    )

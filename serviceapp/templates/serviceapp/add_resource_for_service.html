@@ -1,6 +1,9 @@
 {% extends 'serviceapp/service_main.html' %}
 
 {% block content %}
-    {{ form.name }}
-    {{ form.id_resource }}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input id="submit" type="submit" value="Submit" class="btn btn-success">
+    </form>
 {% endblock %}
