@@ -39,7 +39,7 @@ class DeleteStaffView(DeleteView):
 
 
 class UpdateStaffView(UpdateView):
-    fields = '__all__'
+    form_class = CreateStaffForm
     model = Staff
     template_name = 'staffapp/staff_update_form.html'
     success_url = '/all_staff/'

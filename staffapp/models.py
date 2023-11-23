@@ -9,7 +9,7 @@ class Staff(models.Model):
     last_name = models.CharField(max_length=15)
     sex = models.CharField(max_length=15, choices=gender)
     email = models.CharField(max_length=30, blank=True, default='')
-    phone = models.CharField(max_length=15)
+    phone = models.CharField(max_length=16)
     job_title = models.CharField(max_length=15)
     access_level = models.IntegerField()
 

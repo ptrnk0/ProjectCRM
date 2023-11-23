@@ -43,5 +43,5 @@ class CustomMMCF(forms.ModelMultipleChoiceField):
 class AddResourceForServiceForm(forms.Form):
     resource = CustomMMCF(
         queryset=models.Resource.objects.all(),
-        widget=forms.Select
+        widget=forms.CheckboxSelectMultiple
     )

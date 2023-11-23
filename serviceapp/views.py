@@ -1,11 +1,8 @@
-# from django.shortcuts import render
-# from django.shortcuts import render
 # from django.template.loader import render_to_string
 # from serviceapp import forms
 # from django.http import HttpResponse
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, DeleteView, CreateView
-
 from serviceapp.forms import ServiceForm, ResourceForm, AddResourceForServiceForm
 from serviceapp.models import Resource, Service
 
@@ -62,13 +59,28 @@ class CreateServiceView(CreateView):
     model = Service
     form_class = ServiceForm
     template_name = 'serviceapp/service_create.html'
-    success_url = '/service/list_service/'
+    success_url = '/service/create_service/'
+
+
+def create_service_view(request):
+    form = ServiceForm
+    if request.method == 'POST':
+        Service.objects.create(name=request.POST['name'])
+    return render(request, 'serviceapp/service_create.html', {'form': form})
+
+
+def detail_service_list_resources(request, pk):
+    current_serv = Service.objects.get(id=pk)
+    resources_list = current_serv.resources.all()
+    return render(request, 'serviceapp/service_detail.html',
+                  {'data_resource': resources_list, 'data_service': current_serv})
 
 
 def list_resource_for_service(request, id_service):
     current_serv = Service.objects.get(id=id_service)
     resources_list = current_serv.resources.all()
-    return render(request, 'serviceapp/resource_list_from_service.html', {'data': resources_list})
+    return render(request, 'serviceapp/resource_list_from_service.html',
+                  {'data_resource': resources_list, 'data_service': current_serv.name.lower()})
 
 
 # class AddResourceForService(CreateView):
