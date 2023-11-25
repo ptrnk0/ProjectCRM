@@ -11,46 +11,46 @@
     {% csrf_token %}
     <div id="insert_table" class="shadow-lg p-3 mb-4 bg-body-tertiary">
         <div class="row mb-3">
-            <label for="first_name" class="col-lg-3 col-form-label">First name</label>
+            <label for="{{ form.first_name.id_for_label }}" class="col-lg-3 col-form-label">First name</label>
             <div class="col-sm-4">
-            {{ form.first_name }}
+                {{ form.first_name }}
             </div>
         </div>
         <div class="row mb-3">
-            <label for="last_name" class="col-lg-3 col-form-label">Last name</label>
+            <label for="{{ form.last_name.id_for_label }}" class="col-lg-3 col-form-label">Last name</label>
             <div class="col-sm-4">
-            {{ form.last_name }}
+                {{ form.last_name }}
             </div>
         </div>
         <div class="row mb-3">
-            <label for="id_phone" class="col-lg-3 col-form-label">Phone</label>
+            <label for="{{ form.phone.id_for_label }}" class="col-lg-3 col-form-label">Phone</label>
             <div class="col-sm-4">
-            {{ form.phone }}
+                {{ form.phone }}
             <small id="phoneHelpBlock" class="form-text text-muted">Enter 9 symbols</small>
             </div>
         </div>
         <div class="row mb-3">
-            <label for="email" class="col-lg-3 col-form-label">Email</label>
+            <label for="{{ form.email.id_for_label }}" class="col-lg-3 col-form-label">Email</label>
             <div class="col-sm-4">
-            {{ form.email }}
+                {{ form.email }}
             </div>
         </div>
         <div class="row mb-3">
-            <label for="birthday" class="col-lg-3 col-form-label">Birthday</label>
+            <label for="{{ form.birthday.id_for_label }}" class="col-lg-3 col-form-label">Birthday</label>
             <div class="col-sm-4">
-            {{ form.birthday }}
+                {{ form.birthday }}
             </div>
         </div>
         <div class="row mb-3">
-            <label for="image" class="col-lg-3 col-form-label">Image</label>
+            <label for="{{ form.image.id_for_label }}" class="col-lg-3 col-form-label">Image</label>
             <div class="col-sm-4">
-            {{ form.image }}
+                {{ form.image }}
             </div>
         </div>
         <div class="row mb-3">
-            <label for="comment" class="col-lg-3 col-form-label">Comment</label>
+            <label for="{{ form.comment.id_for_label }}" class="col-lg-3 col-form-label">Comment</label>
             <div class="col-sm-4">
-            {{ form.comment }}
+                {{ form.comment }}
             </div>
         </div>
     </div>

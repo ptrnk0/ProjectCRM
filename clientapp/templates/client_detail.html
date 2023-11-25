@@ -1,17 +1,41 @@
 {% extends 'client_main.html' %}
 
+{% load static %}
+
 {% block bt_all %}
 <button onclick="window.location.href='{% url 'ClientList' %}';" type="button" class="btn btn-secondary">All Clients</button>
 {% endblock %}
 
 {% block content %}
-<div class="shadow-lg p-3 mb-4 bg-body-tertiary">
-    <h2>{{object.full_name}}</h2>
-    <p>Phone number: {{object.phone}}</p>
-    <p>Email: {{object.email}}</p>
-    <p>Birthday: {{object.birthday|date:"d-m-Y"}}</p>
-    <p>Comments: {{object.comment}}</p>
+<div class="row">
+    <div class="col-lg-4 shadow-lg p-3 mb-4 bg-body-tertiary">
+        <h2>{{object.client.full_name}}</h2>
+        <p>Phone number: {{object.client.phone}}</p>
+        <p>Email: {{object.client.email}}</p>
+        <p>Birthday: {{object.client.birthday|date:"d-m-Y"}}</p>
+        <p>Comments: {{object.client.comment}}</p>
+    </div>
+    <div id="carouselExample" class="col-lg-8 mb-4 carousel slide">
+        <div class="carousel-inner">
+            {% for item in object.photo %}
+            <div class="carousel-item">
+                <img async class="d-block w-100" src="{{ MEDIA_URL }}{{item.image}}">
+            </div>
+            {% endfor %}
+        </div>
+        <button class="carousel-control-prev" onclick="plusSlides(-1)" type="button">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </button>
+        <button class="carousel-control-next" onclick="plusSlides(1)" type="button">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </button>
+    </div>
 </div>
-<button onclick="window.location.href='{% url 'ClientUpdate' object.id %}';" type="button" class="btn btn-primary">Update client</button>
-<button onclick="window.location.href='{% url 'ClientDelete' object.id %}';" type="button" class="btn btn-danger">Delete client</button>
+
+<button onclick="window.location.href='{% url 'ClientUpdate' object.client.id %}';" type="button" class="btn btn-primary">Update client</button>
+<button onclick="window.location.href='{% url 'ClientDelete' object.client.id %}';" type="button" class="btn btn-danger">Delete client</button>
+{% endblock %}
+
+{% block js %}
+<script type="text/javascript" src="{% static 'js/slide.js' %}"></script>
 {% endblock %}

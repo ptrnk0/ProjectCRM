@@ -22,6 +22,9 @@ from staffapp.views import ListStaffView
 from django.contrib.auth.decorators import login_required, permission_required
 from CRM.views import login_view, logout_view
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
     path('', include('clientapp.urls')),
@@ -34,4 +37,4 @@ urlpatterns = [
     path('api/', include('ClientListAPI.urls')),
     path('register/', views.register, name='register'),
     path('__debug__/', include('debug_toolbar.urls')),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

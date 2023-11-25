@@ -1,8 +1,9 @@
 from typing import Any
+from django.db import models
 from django.shortcuts import render
 from django.template.loader import render_to_string
 from clientapp import forms
-from clientapp.models import Client
+from clientapp.models import Client, ClientPhoto
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
@@ -17,6 +18,11 @@ class ClientCreate(CreateView):
 
     def post(self, request, *args, **kwargs):
         super().post(request=request, args=args, kwargs=kwargs)
+        client = Client.objects.order_by("-id")[0]
+        for i in request.FILES.getlist('image'):
+            form = forms.ClientPhotoForm(files={"image": i}, data={'client_id': client})
+            if form.is_valid():
+                form.save()
         return JsonResponse({
             'message': 'success'
         })
@@ -33,6 +39,14 @@ class ClientList(ListView):
 class ClientDetail(DetailView):
     model = Client
     template_name = 'client_detail.html'
+
+    def get_object(self, queryset=None):
+        photo_queryset = ClientPhoto.objects.filter(client_id=self.kwargs.get(self.pk_url_kwarg))
+        if photo_queryset:
+            new_photo = photo_queryset.all()
+        else:
+            new_photo = None
+        return {"client": super().get_object(queryset), "photo": new_photo}
 
 
 class ClientUpdate(UpdateView):
