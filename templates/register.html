@@ -20,6 +20,13 @@
             </div>
         </div>
         <div class="row mb-3">
+            <label for="last_name" class="col-lg-3 col-form-label">Last name</label>
+            <div class="col-sm-4">
+            {{ user_form.last_name }}
+            {% csrf_token %}
+            </div>
+        </div>
+        <div class="row mb-3">
             <label for="email" class="col-lg-3 col-form-label">Email</label>
             <div class="col-sm-4">
             {{ user_form.email }}

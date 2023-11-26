@@ -6,53 +6,53 @@
 {% endblock %}
 
 {% block content %}
-<form method="post">
-    {% csrf_token %}
+<h2>Creating staff and his account</h2>
+<form action="" method="post">
     <div id="insert_table" class="shadow-lg p-3 mb-4 bg-body-tertiary">
+        <div class="row mb-3">
+            <label for="username" class="col-lg-3 col-form-label">Username</label>
+            <div class="col-sm-4">
+            {{ user_form.username }}
+            {% csrf_token %}
+            </div>
+        </div>
         <div class="row mb-3">
             <label for="first_name" class="col-lg-3 col-form-label">First name</label>
             <div class="col-sm-4">
-            {{ form.first_name }}
+            {{ user_form.first_name }}
+            {% csrf_token %}
             </div>
         </div>
         <div class="row mb-3">
             <label for="last_name" class="col-lg-3 col-form-label">Last name</label>
             <div class="col-sm-4">
-            {{ form.last_name }}
-            </div>
-        </div>
-        <div class="row mb-3">
-            <label for="phone" class="col-lg-3 col-form-label">Sex</label>
-            <div class="col-sm-4">
-            {{ form.sex }}
+            {{ user_form.last_name }}
+            {% csrf_token %}
             </div>
         </div>
         <div class="row mb-3">
             <label for="email" class="col-lg-3 col-form-label">Email</label>
             <div class="col-sm-4">
-            {{ form.email }}
+            {{ user_form.email }}
+            {% csrf_token %}
             </div>
         </div>
         <div class="row mb-3">
-            <label for="id_phone" class="col-lg-3 col-form-label">Phone</label>
+            <label for="password" class="col-lg-3 col-form-label">Password</label>
             <div class="col-sm-4">
-            {{ form.phone }}
+            {{ user_form.password }}
+            {% csrf_token %}
             </div>
         </div>
         <div class="row mb-3">
-            <label for="image" class="col-lg-3 col-form-label">Job Title</label>
+            <label for="password" class="col-lg-3 col-form-label">Repeat password</label>
             <div class="col-sm-4">
-            {{ form.job_title }}
-            </div>
-        </div>
-        <div class="row mb-3">
-            <label for="comment" class="col-lg-3 col-form-label">Access Level</label>
-            <div class="col-sm-4">
-            {{ form.access_level }}
+            {{ user_form.password2 }}
+            {% csrf_token %}
             </div>
         </div>
     </div>
-    <input id="submit" type="submit" value="Submit" class="btn btn-success">
+    <input type="submit" class="btn btn-primary" value="Create account">
 </form>
 {% endblock %}
 
