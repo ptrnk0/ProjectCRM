@@ -16,7 +16,7 @@ class ClientList(APIView):
         birthday_date = request.query_params.get('birthday')
         search = request.query_params.get('search')
         ordering = request.query_params.get('ordering')
-        perpage = request.query_params.get('perpage', default=2)
+        perpage = request.query_params.get('perpage', default=5)
         page = request.query_params.get('page', default = 1)
         if birthday_date:
             clients = clients.filter(birthday=birthday_date)
@@ -62,7 +62,8 @@ class Client(APIView):
         if deserialized_data.is_valid():
             client_model = deserialized_data.save()
             client_model.save()
-        return Response(deserialized_data.data, status.HTTP_200_OK)
+            return Response(deserialized_data.data, status.HTTP_200_OK)
+        return Response(deserialized_data.errors, status.HTTP_400_BAD_REQUEST)
     
     def delete(self, request, pk):
         client = ClientModel.objects.get(id=pk)
