@@ -7,13 +7,12 @@
 {% block content %}
 <div class="shadow-lg p-3 mb-4 bg-body-tertiary">
     <h2>{{object.first_name}} {{object.last_name}}</h2>
-    <p>Sex: {{object.sex}}</p>
     <p>Email: {{object.email}}</p>
-    <p>Phone: {{object.phone}}</p>
-    <p>Job title: {{object.job_title}}</p>
-    <p>Access level: {{object.access_level}}</p>
+    <p>Job title: {{object.groups.get}}</p>
 </div>
-<button onclick="window.location.href='{% url 'update_staff' object.id %}';" type="button" class="btn btn-primary">Update staff</button>
-<button onclick="window.location.href='{% url 'schedule_staff' object.id %}';" type="button" class="btn btn-primary">Schedule staff</button>
-<button onclick="window.location.href='{% url 'delete_staff' object.id %}';" type="button" class="btn btn-danger">Delete staff</button>
+<button onclick="window.location.href='{% url 'schedule_staff' object.pk %}';" type="button" class="btn btn-primary">Schedule staff</button>
+{% if perms.auth.change_user %}
+<button onclick="window.location.href='{% url 'update_staff' object.pk %}';" type="button" class="btn btn-primary">Update staff</button>
+<button onclick="window.location.href='{% url 'delete_staff' object.pk %}';" type="button" class="btn btn-danger">Delete staff</button>
+{% endif %}
 {% endblock %}

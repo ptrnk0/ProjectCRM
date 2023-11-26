@@ -18,9 +18,9 @@ from django.contrib import admin
 from django.urls import path, include
 
 from CRM import views
-from staffapp.views import ListStaffView
 from django.contrib.auth.decorators import login_required, permission_required
 from CRM.views import login_view, logout_view
+from staffapp.views import ListStaffView
 
 urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),

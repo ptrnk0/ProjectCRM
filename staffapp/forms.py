@@ -1,21 +1,13 @@
 from django import forms
-from .models import Staff, Schedule
+from django.contrib.auth.models import User, Group
+
+from .models import Schedule
 
 
-class CreateStaffForm(forms.ModelForm):
+class UpdateStaffUserForm(forms.ModelForm):
     class Meta:
-        model = Staff
-        fields = '__all__'
-
-        widgets = {
-            'first_name': forms.TextInput(attrs={"class": "form-control"}),
-            'last_name': forms.TextInput(attrs={"class": "form-control"}),
-            'sex': forms.Select(attrs={"class": "form-select"}),
-            'email': forms.EmailInput(attrs={"class": "form-control"}),
-            'phone': forms.TextInput(attrs={"class": "form-control"}),
-            'job_title': forms.TextInput(attrs={"class": "form-control"}),
-            'access_level': forms.NumberInput(attrs={"class": "form-control", "min": "1", "max": "2"}),
-        }
+        model = User
+        fields = ['username', 'first_name', 'last_name', 'email']
 
 
 class CreateScheduleStaffForm(forms.ModelForm):
@@ -31,7 +23,7 @@ class CreateScheduleStaffForm(forms.ModelForm):
         }
 
 
-class FilterCheduleForm(forms.ModelForm):
+class FilterScheduleForm(forms.ModelForm):
     class Meta:
         model = Schedule
         fields = ('date',)
