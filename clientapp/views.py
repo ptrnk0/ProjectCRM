@@ -33,6 +33,7 @@ class ClientList(ListView):
     template_name = 'client_list.html'
     success_url = '/client/create/'
     context_object_name = 'client_list'
+    ordering = '-id'
     paginate_by = 10
 
 

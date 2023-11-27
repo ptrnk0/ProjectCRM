@@ -10,6 +10,7 @@ class ListStaffView(ListView):
     model = Staff
     template_name = 'staffapp/staff_list.html'
     success_url = 'all_staff/'
+    ordering = '-id'
     paginate_by = 10
 
 
