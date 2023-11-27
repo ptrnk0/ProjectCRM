@@ -10,16 +10,15 @@
 </h2>
 
 <form method="get">
-  <div class="form_wrapper form-row">
-    <div class="col-auto">
-      {{ form_filter.date }}
+    <div class="form_wrapper form-row">
+        <div class="col-auto">
+            {{ form_filter.date }}
+        </div>
+        <div class="col-auto">
+            {{ form_filter.date }}
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
     </div>
-    <div class="col-auto">
-        {{ form_filter.date }}
-    </div>
-
-      <button type="submit" class="btn btn-primary">Submit</button>
-  </div>
 </form>
 <table class="table table-hover text-center collapsing shadow-lg p-3 mb-4 bg-body-tertiary">
     <tr>
@@ -28,11 +27,11 @@
         <th>End time</th>
     </tr>
     {% for item in data_schedule %}
-    <tr>
+    <tr class='clickable-row' onclick="window.location='{% url 'schedule_detail' item.pk %}'">
         <td>{{ item.date|date:"d b Y" }}</td>
         <td>{{ item.start_time|time:"H:i" }}</td>
         <td>{{ item.end_time|time:"H:i" }}</td>
-    </tr>
+    </>
     {% endfor %}
 </table>
 {% endblock %}

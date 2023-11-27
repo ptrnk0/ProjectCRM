@@ -1,4 +1,4 @@
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login, logout, get_user_model
 from django.shortcuts import redirect, render
 from CRM.forms import UserRegistrationForm
 
@@ -25,6 +25,10 @@ def register(request):
         user_form = UserRegistrationForm(request.POST)
         if user_form.is_valid():
             new_user = user_form.save(commit=False)
+            User = get_user_model()
+            if len(User.objects.all()) == 0:
+                new_user.is_superuser = True
+                new_user.is_staff = True
             new_user.set_password(user_form.cleaned_data['password'])
             new_user.save()
             return render(request, 'register_done.html', {'new_user': new_user})
