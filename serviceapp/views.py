@@ -11,6 +11,7 @@ class ListResourceView(ListView):
     model = Resource
     field = '__all__'
     context_object_name = 'list_resource'
+    ordering = '-id'
     paginate_by = 10
     template_name = 'serviceapp/resource_list.html'
 

@@ -10,6 +10,7 @@ from .forms import CreateScheduleStaffForm, FilterScheduleForm, UpdateStaffUserF
 class ListStaffView(ListView):
     model = User
     template_name = 'staffapp/staff_list.html'
+    ordering = '-id' 
 
 
 class DetailStaffView(DetailView):
