@@ -5,7 +5,7 @@ form.addEventListener('submit', submitHandler);
 function submitHandler(e){
     e.preventDefault();     // This method will prevent from submitting a form, when clicking on a "Submit" button
 
-    fetch(endpoint + form.querySelector('input').value) //This function makes a PUT request endpoint. 
+    fetch(endpoint + form.querySelector('input').value) //This function makes a GET request to endpoint. 
     .then(response=>response.json())
     .then(data=>{
         row_cells = []

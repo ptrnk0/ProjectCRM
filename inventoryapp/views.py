@@ -53,6 +53,7 @@ class CommodityList(ListView):
     model = Commodity
     template_name = 'commodity_list.html'
     success_url = '/commodity/create/'
+    ordering = '-id'
     paginate_by = 10
 
 
@@ -89,6 +90,7 @@ class OrderList(ListView):
     model = Order
     template_name = 'order_list.html'
     success_url = '/order/create/'
+    ordering = '-id'
     paginate_by = 10
 
 
