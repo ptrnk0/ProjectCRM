@@ -40,6 +40,7 @@ class ListServiceView(ListView):
     paginate_by = 10
     context_object_name = 'list_service'
     template_name = 'serviceapp/service_list.html'
+    ordering = '-id'
 
 
 class DetailServiceView(DetailView):
