@@ -23,3 +23,6 @@ class Schedule(models.Model):
     id_staff = models.ForeignKey(User, on_delete=models.CASCADE)
     start_time = models.TimeField()
     end_time = models.TimeField()
+
+    def __str__(self):
+        return f'Schedule for {self.id_staff} on {self.date}'

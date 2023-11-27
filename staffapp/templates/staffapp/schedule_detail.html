@@ -9,8 +9,12 @@
     <h2>Schedule for {{ object.id_staff }} on {{ object.date|date:"d b Y" }}</h2>
     <p>Start time: {{ object.start_time|time:"H:i" }}</p>
     <p>End time: {{ object.end_time|time:"H:i" }}</p>
+<<<<<<< HEAD
+    <button onclick="window.location.href='{% url 'delete_schedule' object.pk %}';" type="button" class="btn btn-danger">Delete staff</button>
+=======
 </div>
 <div>
     <button onclick="window.location.href='{% url 'delete_schedule' object.pk %}';" type="button" class="btn btn-danger">Delete schedule</button>
+>>>>>>> main
 </div>
 {% endblock %}
