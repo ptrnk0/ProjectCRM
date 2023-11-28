@@ -1,4 +1,6 @@
 from typing import Any
+
+from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.db import models
 from django.shortcuts import render
 from django.template.loader import render_to_string
@@ -50,14 +52,16 @@ class ClientDetail(DetailView):
         return {"client": super().get_object(queryset), "photo": new_photo}
 
 
-class ClientUpdate(UpdateView):
+class ClientUpdate(PermissionRequiredMixin, UpdateView):
+    permission_required = 'clientapp.change_client'
     model = Client
     form_class = forms.ClientForm
     success_url = '/client/list/'
     template_name = 'client_update_form.html'
 
 
-class ClientDelete(DeleteView):
+class ClientDelete(PermissionRequiredMixin, DeleteView):
+    permission_required = 'clientapp.delete_client'
     model = Client
     success_url = '/client/list/'
     template_name = 'client_confirm_delete.html'

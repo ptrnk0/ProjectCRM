@@ -31,9 +31,12 @@
         </button>
     </div>
 </div>
-
-<button onclick="window.location.href='{% url 'ClientUpdate' object.client.id %}';" type="button" class="btn btn-primary">Update client</button>
-<button onclick="window.location.href='{% url 'ClientDelete' object.client.id %}';" type="button" class="btn btn-danger">Delete client</button>
+{% if perms.clientapp.change_client %}
+    <button onclick="window.location.href='{% url 'ClientUpdate' object.client.id %}';" type="button" class="btn btn-primary">Update client</button>
+{% endif %}
+{% if perms.clientapp.delete_client %}
+    <button onclick="window.location.href='{% url 'ClientDelete' object.client.id %}';" type="button" class="btn btn-danger">Delete client</button>
+{% endif %}
 {% endblock %}
 
 {% block js %}

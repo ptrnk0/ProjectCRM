@@ -1,3 +1,5 @@
+from django.contrib.auth.decorators import permission_required
+from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.shortcuts import render
 from django.template.loader import render_to_string
 from django.http import HttpResponse
@@ -62,14 +64,16 @@ class CommodityDetail(DetailView):
     template_name = 'commodity_detail.html'
 
 
-class CommodityUpdate(UpdateView):
+class CommodityUpdate(PermissionRequiredMixin, UpdateView):
+    permission_required = 'inventoryapp.change_commodity'
     model = Commodity
     form_class = forms.ComodityForm
     success_url = '/commodity/list/'
     template_name = 'commodity_update_form.html'
 
 
-class CommodityDelete(DeleteView):
+class CommodityDelete(PermissionRequiredMixin, DeleteView):
+    permission_required = 'inventoryapp.delete_commodity'
     model = Commodity
     success_url = '/commodity/list/'
     template_name = 'commodity_confirm_delete.html'
@@ -99,20 +103,22 @@ class OrderDetail(DetailView):
     template_name = 'order_detail.html'
 
 
-class OrderUpdate(UpdateView):
+class OrderUpdate(PermissionRequiredMixin, UpdateView):
+    permission_required = 'inventoryapp.change_order'
     model = Order
     form_class = forms.OrderForm
     success_url = '/order/list/'
     template_name = 'order_update_form.html'
 
 
-class OrderDelete(DeleteView):
+class OrderDelete(PermissionRequiredMixin, DeleteView):
+    permission_required = 'inventoryapp.delete_order'
     model = Order
     success_url = '/order/list/'
     template_name = 'order_confirm_delete.html'
 
 
-
+@permission_required('inventoryapp.delete_commodity')
 def commodityDelete(request):
     try:
         for i in request.POST.copy().pop('id'):
@@ -125,6 +131,7 @@ def commodityDelete(request):
         return render(request, 'commodity_db.html', context)
     
 
+@permission_required('inventoryapp.delete_order')
 def orderDelete(request):
     try:
         for i in request.POST.copy().pop('id'):
