@@ -38,13 +38,14 @@ def create_staff_view(request):
 
 
 class DeleteStaffUserView(PermissionRequiredMixin, DeleteView):
-    permission_required = 'auth.change_user'
+    permission_required = 'auth.delete_user'
     model = User
     template_name = 'staffapp/delete_confirm.html'
     success_url = '/all_staff'
 
 
-class UpdateStaffView(UpdateView):
+class UpdateStaffView(PermissionRequiredMixin, UpdateView):
+    permission_required = 'auth.change_user'
     model = User
     form_class = UserRegistrationForm
     template_name = 'staffapp/staff_update_form.html'
@@ -86,7 +87,8 @@ class DetailScheduleView(DetailView):
     template_name = 'staffapp/schedule_detail.html'
 
 
-class DeleteScheduleView(DeleteView):
+class DeleteScheduleView(PermissionRequiredMixin, DeleteView):
+    permission_required = 'staffapp.delete_schedule'
     model = Schedule
     template_name = 'staffapp/delete_confirm.html'
     success_url = '/all_staff/'

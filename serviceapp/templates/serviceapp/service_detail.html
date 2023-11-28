@@ -12,12 +12,17 @@
             <th>Resource</th>
         </tr>
         {% for item in data_resource %}
-        <tr>
+        <tr type="button" class='clickable-row' onclick="window.location='{% url 'detail_resource' item.id %}'">
             <td>{{ item.name }}</td>
         </tr>
         {% endfor %}
     </table>
 </div>
-<button onclick="window.location.href='{% url 'delete_service' data_service.id %}';" type="button" class="btn btn-danger">Delete service</button>
-<button onclick="window.location.href='{% url 'add_resource_for_service' data_service.id %}';" type="button" class="btn btn-success">Add resource</button>
+    {% if perms.serviceapp.update_service %}
+        <button onclick="window.location.href='{% url 'update_service' data_service.id %}';" type="button" class="btn btn-primary">Update service</button>
+    {% endif %}
+        <button onclick="window.location.href='{% url 'add_resource_for_service' data_service.id %}';" type="button" class="btn btn-success">Add resource</button>
+    {% if perms.serviceapp.delete_service %}
+        <button onclick="window.location.href='{% url 'delete_service' data_service.id %}';" type="button" class="btn btn-danger">Delete service</button>
+    {% endif %}
 {% endblock %}

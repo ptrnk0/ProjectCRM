@@ -13,6 +13,8 @@
 <button onclick="window.location.href='{% url 'schedule_staff' object.pk %}';" type="button" class="btn btn-primary">Schedule staff</button>
 {% if perms.auth.change_user %}
 <button onclick="window.location.href='{% url 'update_staff' object.pk %}';" type="button" class="btn btn-primary">Update staff</button>
+{% endif %}
+{% if perms.auth.delete_user %}
 <button onclick="window.location.href='{% url 'delete_staff' object.pk %}';" type="button" class="btn btn-danger">Delete staff</button>
 {% endif %}
 {% endblock %}
