@@ -2,7 +2,7 @@ from django import forms
 from clientapp import models
 
 class ClientForm(forms.ModelForm):
-    image = forms.ImageField(max_length=255, allow_empty_file=True, widget=forms.FileInput(attrs={"class": "form-control", "type": "file", "accept": "image/png, image/jpeg", "multiple": ""}))
+    image = forms.ImageField(max_length=255, required=False, widget=forms.FileInput(attrs={"class": "form-control", "type": "file", "accept": "image/png, image/jpeg", "multiple": ""}))
 
     class Meta:
         model = models.Client

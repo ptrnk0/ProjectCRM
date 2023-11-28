@@ -5,7 +5,8 @@
 {% endblock %}
 
 {% block content %}
-<div class="shadow-lg p-3 mb-4 bg-body-tertiary">
+<div class="row">
+<div class="col-lg-7 shadow-lg p-3 mb-4 bg-body-tertiary">
 <h1>{{object.date}}</h1>
 <p>Commodity: {{object.id_commodity}}</p>
 <p>Staff: {{object.id_employee}}</p>
@@ -18,4 +19,5 @@
     {% if perms.inventoryapp.delete_order %}
         <button onclick="window.location.href='{% url 'OrderDelete' object.id %}';" type="button" class="btn btn-danger">Delete order</button>
     {% endif %}
+</div>
 {% endblock %}
