@@ -30,3 +30,6 @@ class ClientPhoto(models.Model):
 
     class Meta:
         db_table = 'ClientImage'
+    
+    def __str__(self) -> str:
+        return f'{self.image}'
