@@ -39,8 +39,8 @@
         <td>{{item.date| date:"d-m-Y / H:i"}}</td>
         <td>{{item.id_commodity.name}}</td>
         <td>{{item.id_employee.first_name}} {{item.id_employee.last_name}}</td>
-        <td>{{item.discount|default:"0" }}</td>
-        <td>{{item.total_price}}</td>
+        <td>{{item.discount|default:"0" }} %</td>
+        <td>$ {{item.total_price}}</td>
         <td>{{item.amount}}</td>
     </tr>
     {% endfor %}

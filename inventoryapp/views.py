@@ -1,6 +1,6 @@
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import permission_required
 from django.contrib.auth.mixins import PermissionRequiredMixin
-from django.shortcuts import render
 from django.template.loader import render_to_string
 from django.http import HttpResponse
 from inventoryapp.models import Commodity, Order
@@ -8,40 +8,6 @@ from inventoryapp import forms
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
-
-# Create your views here.
-# def inventory_form_view(request, subDir):
-#     if subDir == 'commodity':
-#         form = forms.ComodityForm()
-#         if request.method == 'POST':
-#             form = forms.ComodityForm(request.POST)
-#             if form.is_valid():
-#                 form.save()
-#             rendered = render_to_string('commodity_submited.html')
-#             return HttpResponse(rendered)
-#         context = {'form': form}
-#         return render(request, 'commodity.html', context)
-    
-#     elif subDir == 'order':
-#         form = forms.OrderForm()
-#         if request.method == 'POST':
-#             form = forms.OrderForm(request.POST)
-#             if form.is_valid():
-#                 form.save()
-#             rendered = render_to_string('order_submited.html')
-#             return HttpResponse(rendered)
-#         context = {'form': form}
-#         return render(request, 'order.html', context)
-    
-#     elif subDir == 'commodity_table':
-#         data = models.Commodity.objects.all()
-#         context = {'form': data}
-#         return render(request, 'commodity_db.html', context)
-    
-#     elif subDir == 'order_table':
-#         data = models.Order.objects.all().select_related()
-#         context = {'form': data}
-#         return render(request, 'order_db.html', context)
 
 
 class CommodityCreate(CreateView):
@@ -81,13 +47,23 @@ class CommodityDelete(PermissionRequiredMixin, DeleteView):
 
 
 
-
-
 class OrderCreate(CreateView):
     model = Order
-    form_class = forms.OrderForm
     template_name = 'order_create.html'
     success_url = '/order/create/'
+
+    def get(self, *args, **kwargs):
+        formset = forms.orderFormSet(queryset=Order.objects.none())
+        return self.render_to_response({"order_formset": formset})
+    
+    def post(self, *args, **kwargs):
+        formset = forms.orderFormSet(data=self.request.POST)
+
+        if formset.is_valid():
+            formset.save()
+            return redirect('/order/list/')
+        
+        return self.render_to_response({"order_formset": formset})
 
 
 class OrderList(ListView):
