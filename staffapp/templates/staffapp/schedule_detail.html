@@ -11,6 +11,8 @@
     <p>End time: {{ object.end_time|time:"H:i" }}</p>
 </div>
 <div>
-    <button onclick="window.location.href='{% url 'delete_schedule' object.pk %}';" type="button" class="btn btn-danger">Delete schedule</button>
+    {% if perms.staffapp.delete_schedule %}
+        <button onclick="window.location.href='{% url 'delete_schedule' object.pk %}';" type="button" class="btn btn-danger">Delete schedule</button>
+    {% endif %}
 </div>
 {% endblock %}
