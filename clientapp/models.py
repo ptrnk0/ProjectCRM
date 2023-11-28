@@ -25,7 +25,7 @@ class Client(models.Model):
     
 
 class ClientPhoto(models.Model):
-    image = models.ImageField(upload_to=user_directory_path, blank=True, default='')
+    image = models.ImageField(upload_to=user_directory_path, null=True, blank=True)
     client_id = models.ForeignKey(Client, on_delete=models.PROTECT, related_name='photo', null=True, default=None)
 
     class Meta:
