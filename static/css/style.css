@@ -3,19 +3,10 @@
     margin-bottom: 2%;
 }
 
-/* #buttons button:active {
-    background-color: blue;
-    transform: scale(0.99);
-} */
-
 #buttons button:hover {
     background: #ef615d;
     color: white;
 }
-
-/* #submit {
-    margin-top: 2%;
-} */
 
 #lists {
     margin-top: 10%;
@@ -100,6 +91,30 @@ h2 span {
     max-width: 500px;
     gap: 10px;
     margin-bottom: 10px;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.order-form p {
+    display: inline-flex;
+    align-items: center;
+    max-width: 120px;
+    gap: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.order-form p label {
+    display: none;
+}
+
+#label {
+    display: inline-flex;
+    align-items: center;
+    max-width: 125px;
+    gap: 10px;
     width: 100%;
     flex-wrap: wrap;
 }

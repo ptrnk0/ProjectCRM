@@ -27,6 +27,11 @@ class OrderForm(forms.ModelForm):
             'date': forms.DateTimeInput(attrs={'type': 'datetime-local', "class": "form-control"}),
             'id_commodity': forms.Select(attrs={"class": "form-select"}),
             'id_employee': forms.Select(attrs={"class": "form-select"}),
-            'amount': forms.NumberInput(attrs={"class": "form-control"}),
-            'discount': forms.NumberInput(attrs={"class": "form-control"}),
+            'amount': forms.NumberInput(attrs={"class": "form-control", "placeholder": "amount"}),
+            'discount': forms.NumberInput(attrs={"class": "form-control", "placeholder": "discount"}),
         }
+
+
+orderFormSet = forms.modelformset_factory(
+    models.Order, form=OrderForm, extra=1
+)

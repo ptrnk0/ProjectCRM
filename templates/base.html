@@ -23,8 +23,8 @@
                             <button class="btn btn-outline-success" type="submit">Search</button>
                         </form>
                     </div>
-                    <div class="col-lg-1 ">
-                        <a href="#" class="d-flex align-items-center justify-content-center p-3 dropdown-toggle" id="dropdownUser3" data-bs-toggle="dropdown" aria-expanded="false">
+                    <div class="col-lg-1">
+                        <a href="#" class="d-flex align-items-center justify-content-center px-1 py-2 dropdown-toggle" id="dropdownUser3" data-bs-toggle="dropdown" aria-expanded="false">
                             <img src="{% static 'inventoryapp/img/profile-logo.png' %}" class="rounded-circle" width="42" height="34">
                         </a>
                         <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser3">
@@ -33,6 +33,9 @@
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="{% url 'logoutSite' %}">Sign out</a></li>
                         </ul>
+                        {% if user.is_authenticated %}
+                        <span class="text-center px-lg-3">{{ user.get_username|title }}</span>
+                        {% endif %}
                     </div>
                 </div>
             </div>

@@ -5,34 +5,50 @@
 {% endblock %}
 
 {% block content %}
-<form action="" method="POST">
+<form id="form-container" method="POST">
     {% csrf_token %}
     <div id="insert_table" class="shadow-lg p-3 mb-4 bg-body-tertiary">
-        <div class="row mb-3">
-            <label for="first_name" class="col-lg-3 col-form-label">Commodity</label>
-            <div class="col-sm-4">
-            {{ form.id_commodity }}
-            </div>
+        <div class="row align-items-center">
+            <div id="label" class="col">Commodity</div>
+            <div id="label" class="col">Staff</div>
         </div>
-        <div class="row mb-3">
-            <label for="last_name" class="col-lg-3 col-form-label">Staff</label>
-            <div class="col-sm-4">
-            {{ form.id_employee }}
-            </div>
+        {{order_formset.management_form}}
+        {% for form in order_formset %}
+        <div class="order-form">
+            {{form.as_p}}
         </div>
-        <div class="row mb-3">
-            <label for="phone" class="col-lg-3 col-form-label">Amount</label>
-            <div class="col-sm-4">
-            {{ form.amount }}
-            </div>
-        </div>
-        <div class="row mb-3">
-            <label for="email" class="col-lg-3 col-form-label">Discount</label>
-            <div class="col-sm-4">
-            {{ form.discount }}
-            </div>
-        </div>
+        {% endfor %}
+        <input id="but" type="hidden">
     </div>
+    <button id="add-form" type="button" class="btn btn-success">Add Another Order</button>
     <input id="submit" type="submit" value="Submit" class="btn btn-success">
 </form>
+{% endblock %}
+
+{% block js %}
+<script type="text/javascript">
+    let orderForm = document.querySelectorAll(".order-form")
+    let container = document.querySelector("#form-container")
+    let addButton = document.querySelector("#add-form")
+    let totalForms = document.querySelector("#id_form-TOTAL_FORMS")
+    let divv = document.querySelector("#insert_table")
+    let inp = document.querySelector("#but")
+
+    let formNum = orderForm.length-1
+
+    addButton.addEventListener('click', addForm)
+
+    function addForm(e) {
+    e.preventDefault()
+
+    let newForm = orderForm[0].cloneNode(true) //Clone the order form
+    let formRegex = RegExp(`form-(\\d){1}-`,'g') //Regex to find all instances of the form number
+
+    formNum++ //Increment the form number
+    newForm.innerHTML = newForm.innerHTML.replace(formRegex, `form-${formNum}-`) //Update the new form to have the correct form number
+    divv.insertBefore(newForm, inp) //Insert the new form at the end of the list of forms
+
+    totalForms.setAttribute('value', `${formNum+1}`) //Increment the number of total forms in the management form
+}
+</script>
 {% endblock %}
