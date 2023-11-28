@@ -10,6 +10,10 @@
 <p>Price: {{object.price}}</p>
 <p>Amount: {{object.amount}}</p>
 </div>
-<button onclick="window.location.href='{% url 'CommodityUpdate' object.id %}';" type="button" class="btn btn-primary">Update commodity</button>
-<button onclick="window.location.href='{% url 'CommodityDelete' object.id %}';" type="button" class="btn btn-danger">Delete commodity</button>
+    {% if perms.inventoryapp.change_commodity %}
+        <button onclick="window.location.href='{% url 'CommodityUpdate' object.id %}';" type="button" class="btn btn-primary">Update commodity</button>
+    {% endif %}
+    {% if perms.inventoryapp.delete_commodity %}
+        <button onclick="window.location.href='{% url 'CommodityDelete' object.id %}';" type="button" class="btn btn-danger">Delete commodity</button>
+    {% endif %}
 {% endblock %}
