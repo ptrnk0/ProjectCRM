@@ -29,7 +29,7 @@ SECRET_KEY = config['SECRET_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config['DEBUG']
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['0.0.0.0', '127.0.0.1', '176.108.4.95', '192.168.0.134']
 
 
 # Application definition
@@ -148,7 +148,7 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-LOGIN_URL = 'http://127.0.0.1:8000/login/'
+LOGIN_URL = '/login/'
 
 
 MEDIA_URL = "/media/"
