@@ -1,7 +1,7 @@
-{% extends 'serviceapp/service_main.html' %}
+{% extends 'staffapp/staff_main.html' %}
 
-{% block all_service %}
-<button onclick="window.location.href='{% url 'list_service' %}';" type="button" class="btn btn-primary">All service</button>
+{% block all_schedule %}
+<button onclick="window.location.href='{% url 'all_schedule' %}';" type="button" class="btn btn-primary">All schedule</button>
 {% endblock %}
 
 {% block content %}
@@ -24,16 +24,20 @@
         {% endif %}
     </ul>
 </nav>
-<div>
-    <table class="table table-hover text-center collapsing shadow-lg p-3 mb-4 bg-body-tertiary">
-        <tr>
-            <th>Name</th>
-        </tr>
-        {% for item in list_service %}
-        <tr type="button" class='clickable-row' onclick="window.location='{% url 'detail_service' item.id %}'">
-            <td>{{ item.name }}</td>
-        </tr>
-        {% endfor %}
-    </table>
-</div>
+<table class="table table-hover text-center collapsing shadow-lg p-3 mb-4 bg-body-tertiary">
+    <tr>
+        <th>Staff</th>
+        <th>Date</th>
+        <th>Start time</th>
+        <th>End time</th>
+    </tr>
+    {% for item in object_list %}
+    <tr class='clickable-row' onclick="window.location='{% url 'schedule_detail' item.pk %}'">
+        <td>{{ item.id_staff }}</td>
+        <td>{{ item.date|date:"d b Y" }}</td>
+        <td>{{ item.start_time|time:"H:i" }}</td>
+        <td>{{ item.end_time|time:"H:i" }}</td>
+    </tr>
+    {% endfor %}
+</table>
 {% endblock %}

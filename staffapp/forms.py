@@ -4,9 +4,22 @@ from .models import Schedule
 
 
 class UpdateStaffUserForm(forms.ModelForm):
+    group = forms.ModelChoiceField(
+        required=True,
+        queryset=Group.objects.all(),
+        widget=forms.Select(attrs={"class": "form-select"})
+    )
+
     class Meta:
         model = User
         fields = ['username', 'first_name', 'last_name', 'email']
+
+        widgets = {
+            'username': forms.TextInput(attrs={"class": "form-control"}),
+            'first_name': forms.TextInput(attrs={"class": "form-control"}),
+            'last_name': forms.TextInput(attrs={"class": "form-control"}),
+            'email': forms.EmailInput(attrs={"class": "form-control"}),
+        }
 
 
 class CreateScheduleStaffForm(forms.ModelForm):

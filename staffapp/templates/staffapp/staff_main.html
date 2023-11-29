@@ -18,6 +18,9 @@
             {% block create_staff %}
             <button onclick="window.location.href='{% url 'create_staff' %}';" type="button" class="btn btn-secondary">Create staff</button>
             {% endblock %}
+            {% block all_schedule %}
+            <button onclick="window.location.href='{% url 'all_schedule' %}';" type="button" class="btn btn-secondary">All schedule</button>
+            {% endblock %}
             {% block create_schedule %}
             <button onclick="window.location.href='{% url 'create_schedule' %}';" type="button" class="btn btn-secondary">Create schedule</button>
             {% endblock %}
