@@ -5,7 +5,7 @@ from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.shortcuts import render
 from django.urls import reverse
 from django.views.generic import ListView, DetailView, DeleteView, CreateView, UpdateView
-from serviceapp.forms import ServiceForm, ResourceForm, AddResourceForServiceForm
+from serviceapp.forms import ServiceForm, ResourceForm, AddResourceForServiceForm, CreateServiceForm
 from serviceapp.models import Resource, Service
 
 
@@ -84,9 +84,11 @@ class UpdateServiceView(PermissionRequiredMixin, UpdateView):
 
 
 def create_service_view(request):
-    form = ServiceForm
+    form = CreateServiceForm
     if request.method == 'POST':
-        Service.objects.create(name=request.POST['name'])
+        new_service = Service.objects.create(name=request.POST['name'])
+        if request.POST.get('resource'):
+            new_service.resources.add(*request.POST.getlist('resource'))
     return render(request, 'serviceapp/service_create.html', {'form': form})
 
 
@@ -101,7 +103,9 @@ def add_resource_for_service_view(request, pk):
     form = AddResourceForServiceForm
     current_serv = Service.objects.get(id=pk)
     if request.method == 'POST':
-        add_resource = Resource.objects.get(id=request.POST['resource'])
-        current_serv.resources.add(add_resource)
+        if request.POST.get('resource'):
+            current_serv.resources.add(*request.POST.getlist('resource'))
+        else:
+            current_serv.resources.remove(*Resource.objects.all())
         return detail_service_list_resources_view(request, pk)
     return render(request, 'serviceapp/add_resource_for_service.html', {'form': form})
