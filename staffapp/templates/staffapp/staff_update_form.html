@@ -33,6 +33,13 @@
                 {{ form.email }}
                 </div>
             </div>
+            <div class="row mb-3">
+                <label for="group" class="col-lg-3 col-form-label">Job title</label>
+                <div class="col-sm-4">
+                {{ form.group }}
+{#                {{ form.errors }}#}
+                </div>
+            </div>
         </div>
         <input id="submit" type="submit" value="Update" class="btn btn-success">
     </form>

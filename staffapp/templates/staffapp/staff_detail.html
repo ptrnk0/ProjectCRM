@@ -5,10 +5,13 @@
 {% endblock %}
 
 {% block content %}
-<div class="shadow-lg p-3 mb-4 bg-body-tertiary">
-    <h2>{{object.first_name}} {{object.last_name}}</h2>
-    <p>Email: {{object.email}}</p>
-    <p>Job title: {{object.groups.get}}</p>
+<div class="row">
+    <div class="col-lg-4 shadow-lg p-3 mb-4 bg-body-tertiary">
+        <h2>{{object.first_name}} {{object.last_name}}</h2>
+        <p>Email: {{object.email}}</p>
+        <p>Job title: {{object.groups.get}}</p>
+        <p>Username: {{object.username}}</p>
+    </div>
 </div>
 <button onclick="window.location.href='{% url 'schedule_staff' object.pk %}';" type="button" class="btn btn-primary">Schedule staff</button>
 {% if perms.auth.change_user %}

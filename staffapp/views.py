@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth.decorators import permission_required
 from django.contrib.auth.mixins import PermissionRequiredMixin
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 from django.shortcuts import render, redirect
 from django.views.generic import ListView, CreateView, DetailView, DeleteView, UpdateView
 from CRM.forms import UserRegistrationForm
@@ -12,6 +12,8 @@ from .forms import CreateScheduleStaffForm, FilterScheduleForm, UpdateStaffUserF
 class ListStaffView(ListView):
     model = User
     template_name = 'staffapp/staff_list.html'
+    ordering = '-id'
+    paginate_by = 10
 
 
 class DetailStaffView(DetailView):
@@ -44,23 +46,27 @@ class DeleteStaffUserView(PermissionRequiredMixin, DeleteView):
     success_url = '/all_staff'
 
 
-class UpdateStaffView(PermissionRequiredMixin, UpdateView):
-    permission_required = 'auth.change_user'
-    model = User
-    form_class = UserRegistrationForm
-    template_name = 'staffapp/staff_update_form.html'
-    success_url = '/all_staff/'
+# class UpdateStaffView(PermissionRequiredMixin, UpdateView):
+#     permission_required = 'auth.change_user'
+#     model = User
+#     form_class = UserRegistrationForm
+#     template_name = 'staffapp/staff_update_form.html'
+#     success_url = '/all_staff/'
 
 
 @permission_required('auth.change_user')
 def update_staff_view(request, pk):
+    current_user = User.objects.get(id=pk)
     if request.method == 'POST':
-        form = UpdateStaffUserForm(request.POST, instance=User.objects.get(id=pk))
+        form = UpdateStaffUserForm(request.POST, instance=current_user)
         if form.is_valid():
             form.save()
+            if current_user.groups.all():
+                current_user.groups.get().user_set.remove(current_user)
+            Group.objects.get(id=(request.POST['group'])).user_set.add(pk)
             return redirect(to='all_staff')
     else:
-        form = UpdateStaffUserForm(instance=User.objects.get(id=pk))
+        form = UpdateStaffUserForm(instance=current_user)
     return render(request, 'staffapp/staff_update_form.html', {'form': form})
 
 
