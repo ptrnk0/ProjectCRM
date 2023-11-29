@@ -70,6 +70,13 @@ def update_staff_view(request, pk):
     return render(request, 'staffapp/staff_update_form.html', {'form': form})
 
 
+class AllScheduleView(ListView):
+    model = Schedule
+    template_name = 'staffapp/schedule_list.html'
+    ordering = '-id'
+    paginate_by = 10
+
+
 class CreateScheduleStaffView(CreateView):
     model = Schedule
     form_class = CreateScheduleStaffForm
@@ -80,7 +87,7 @@ class CreateScheduleStaffView(CreateView):
 def detail_schedule_staff_view(request, id_staff):
     filter_schedule_form = FilterScheduleForm
     staff = User.objects.get(id=id_staff)
-    if request.GET:
+    if request.GET.getlist('date'):
         schedule = Schedule.objects.filter(date__range=request.GET.getlist('date'), id_staff=id_staff).order_by('date')
     else:
         schedule = Schedule.objects.filter(id_staff=id_staff).order_by('date')
@@ -97,4 +104,4 @@ class DeleteScheduleView(PermissionRequiredMixin, DeleteView):
     permission_required = 'staffapp.delete_schedule'
     model = Schedule
     template_name = 'staffapp/delete_confirm.html'
-    success_url = '/all_staff/'
+    success_url = '/all_schedule/'

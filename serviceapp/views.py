@@ -58,12 +58,6 @@ class ListServiceView(ListView):
     ordering = '-id'
 
 
-class DetailServiceView(DetailView):
-    model = Service
-    template_name = 'serviceapp/service_detail.html'
-    context_object_name = 'detail_service'
-
-
 class DeleteServiceView(PermissionRequiredMixin, DeleteView):
     permission_required = 'serviceapp.delete_service'
     model = Service
