@@ -1,7 +1,9 @@
 {% extends 'inventory_main.html' %}
 
 {% block ord_table %}
-<button onclick="window.location.href='{% url 'OrderList' %}';" type="button" class="btn btn-primary">Order Table</button>
+<a href="{% url 'OrderList' %}" class="list-group-item list-group-item-action py-2 ripple active">
+    <span>Orders</span>
+</a>
 {% endblock %}
 
 {% block content %}
