@@ -1,8 +1,8 @@
 // filling reservation date input with current date
 const date = new Date()
 document.getElementById('reservation_date').value = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate().toString().padStart(2, "0")}`
-
-console.log(document.getElementById('reservation_date').value)
+//
+// console.log(document.getElementById('reservation_date').value)
 // Calling the function for constructing forms and record table
 getBookings()
 
@@ -14,18 +14,20 @@ function getBookings() {
     const date = document.getElementById('reservation_date').value
     document.getElementById('today').innerHTML = date
 
-    fetch("{% url 'record' %}" + '?date=' + date)
+    fetch("/record/list/" + '?date=' + date)
         .then(r => r.json())
         .then(data => {
+            // console.log(data)
             reserved_slots = []
             bookings = ""
-            console.log(data)
+            // console.log(data)
             
             // Constructing paragraphs for reserved times
             for (const item of data) {
-                console.log(item.fields)
-                reserved_slots.push(item.fields.reservation_slot)
-                bookings += `<p>${item.fields.first_name} - ${formatTime(item.fields.reservation_slot)} </p>`
+                // console.log(item.fields)
+                reserved_slots.push(item.fields.time_slot)
+                // console.log(reserved_slots)
+                bookings += `<p>${item.fields.id_client} - ${formatTime(item.fields.time_slot)} </p>`
             }
 
             // Constructing options for time select
@@ -57,15 +59,18 @@ function formatTime(time) {
     return label
 }
 
-// Submiting the form
-document.getElementById('button').addEventListener('click', function (e) {
-    const formdata = {
-        first_name: document.getElementById('first_name').value,
-        reservation_date: document.getElementById('reservation_date').value,
-        reservation_slot: document.getElementById('reservation_slot').value,
-    }
 
-    fetch("{% url 'bookings' %}", { method: 'post', body: JSON.stringify(formdata) })
+const form = document.getElementById('form');
+// Submitting the form
+document.getElementById('button').addEventListener('click', function (e) {
+    e.preventDefault();
+    // const formdata = {
+    //     first_name: document.getElementById('first_name').value,
+    //     reservation_date: document.getElementById('reservation_date').value,
+    //     reservation_slot: document.getElementById('reservation_slot').value,
+    // }
+    // console.log(new FormData(form))
+    fetch(form.action, { method: 'post', body: new FormData(form)})
         .then(r => r.text())
         .then(data => {
         getBookings()

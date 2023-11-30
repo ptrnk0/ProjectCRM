@@ -31,6 +31,7 @@ urlpatterns = [
     path('', include('inventoryapp.urls')),
     path('', include('serviceapp.urls')),
     path('', include('staffapp.urls')),
+    path('', include('recordapp.urls')),
     path('', login_required(ListStaffView.as_view())),
     path('login/', login_view, name='loginSite'),
     path('logout/', logout_view, name='logoutSite'),
