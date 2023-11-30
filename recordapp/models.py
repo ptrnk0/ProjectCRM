@@ -12,7 +12,7 @@ class Record(models.Model):
     id_staff = models.ForeignKey(User, on_delete=models.PROTECT)
     id_service = models.ForeignKey(service.Service, on_delete=models.PROTECT)
     price = models.DecimalField(max_digits=5, decimal_places=2)
-    duration = models.IntegerField(max_length=2)
+    duration = models.SmallIntegerField(default=9)
 
     class Meta:
         db_table = 'Record'
