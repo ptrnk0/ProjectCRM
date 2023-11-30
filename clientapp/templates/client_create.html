@@ -3,7 +3,9 @@
 {% load static %}
 
 {% block bt_ins %}
-<button onclick="window.location.href='{% url 'ClientCreate' %}';" type="button" class="btn btn-primary">Insert Client</button>
+<a href="{% url 'ClientCreate' %}" class="list-group-item list-group-item-action py-2 ripple active" aria-current="true">
+    <span>Add client</span>
+</a>
 {% endblock %}
 
 {% block content %}

@@ -3,11 +3,12 @@
 {% load static %}
 
 {% block bt_all %}
-<button onclick="window.location.href='{% url 'ClientList' %}';" type="button" class="btn btn-primary">All Clients</button>
+<a href="{% url 'ClientList' %}" class="list-group-item list-group-item-action py-2 ripple active" aria-current="true">
+    <span>Clients</span>
+</a>
 {% endblock %}
 
 {% block content %}
-
 <nav aria-label="Page navigation example">
     <ul class="pagination">
         {% if page_obj.has_previous %}        
@@ -46,7 +47,6 @@
     </tr>
     {% endfor %}
 </table>
-
 {% endblock %}
 
 {% block js %}

@@ -1,7 +1,9 @@
 {% extends 'inventory_main.html' %}
 
 {% block commodity %}
-<button onclick="window.location.href='{% url 'CommodityCreate' %}';" type="button" class="btn btn-primary">Commodity</button>
+<a href="{% url 'CommodityCreate' %}" class="list-group-item list-group-item-action py-2 ripple active">
+    <span>Commodity</span>
+</a>
 {% endblock %}
 
 {% block content %}
