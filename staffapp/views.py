@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import permission_required
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.contrib.auth.models import User, Group
 from django.shortcuts import render, redirect
-from django.views.generic import ListView, CreateView, DetailView, DeleteView, UpdateView
+from django.views.generic import ListView, CreateView, DetailView, DeleteView
 from CRM.forms import UserRegistrationForm
 from .models import Schedule
 from .forms import CreateScheduleStaffForm, FilterScheduleForm, UpdateStaffUserForm
@@ -44,14 +44,6 @@ class DeleteStaffUserView(PermissionRequiredMixin, DeleteView):
     model = User
     template_name = 'staffapp/delete_confirm.html'
     success_url = '/all_staff'
-
-
-# class UpdateStaffView(PermissionRequiredMixin, UpdateView):
-#     permission_required = 'auth.change_user'
-#     model = User
-#     form_class = UserRegistrationForm
-#     template_name = 'staffapp/staff_update_form.html'
-#     success_url = '/all_staff/'
 
 
 @permission_required('auth.change_user')
