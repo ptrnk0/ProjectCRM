@@ -5,6 +5,10 @@
 <title>Records</title>
 {% endblock %}
 
+{% block record %}
+<a class="nav-link active" href="{% url 'create_record' %}">Record</a>
+{% endblock %}
+
 {% block container %}
 <section>
     <article>
@@ -52,7 +56,7 @@
 {#                    <input type="date" placeholder="Reservation Date" required="" id="reservation_date">#}
                     {{ form.id_service }}
                 </p>
-                <button type="button" id="button">Reserve</button>
+                <button type="button" class="btn btn-primary" id="button">Reserve</button>
 
                 </form>
             </div>

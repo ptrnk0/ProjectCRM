@@ -2,7 +2,9 @@
 {% load static %}
 
 {% block create_staff %}
-<button onclick="window.location.href='{% url 'create_staff' %}';" type="button" class="btn btn-primary">Create staff</button>
+<a href="{% url 'create_staff' %}" class="list-group-item list-group-item-action py-2 ripple active">
+    <span>Add staff</span>
+</a>
 {% endblock %}
 
 {% block content %}
