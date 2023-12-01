@@ -1,7 +1,9 @@
 {% extends 'staffapp/staff_main.html' %}
 
 {% block create_schedule %}
-<button onclick="window.location.href='{% url 'create_schedule' %}';" type="button" class="btn btn-primary">Create schedule</button>
+<a href="{% url 'create_schedule' %}" class="list-group-item list-group-item-action py-2 ripple active">
+    <span>Add schedule</span>
+</a>
 {% endblock %}
 
 {% block content %}

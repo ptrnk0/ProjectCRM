@@ -1,7 +1,9 @@
 {% extends 'staffapp/staff_main.html' %}
 
 {% block all_schedule %}
-<button onclick="window.location.href='{% url 'all_schedule' %}';" type="button" class="btn btn-primary">All schedule</button>
+<a href="{% url 'all_schedule' %}" class="list-group-item list-group-item-action py-2 ripple active">
+    <span>Schedule</span>
+</a>
 {% endblock %}
 
 {% block content %}

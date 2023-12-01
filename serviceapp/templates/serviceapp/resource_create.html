@@ -1,7 +1,9 @@
 {% extends 'serviceapp/service_main.html' %}
 
 {% block create_resource %}
-<button onclick="window.location.href='{% url 'create_resource' %}';" type="button" class="btn btn-primary">Create resource</button>
+<a href="{% url 'create_resource' %}" class="list-group-item list-group-item-action py-2 ripple active">
+    <span>Add resource</span>
+</a>
 {% endblock %}
 
 {% block content %}
