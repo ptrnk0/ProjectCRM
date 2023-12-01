@@ -1,8 +1,7 @@
 // filling reservation date input with current date
 const date = new Date()
 document.getElementById('reservation_date').value = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate().toString().padStart(2, "0")}`
-//
-// console.log(document.getElementById('reservation_date').value)
+
 // Calling the function for constructing forms and record table
 getBookings()
 
@@ -17,17 +16,13 @@ function getBookings() {
     fetch("/record/list/" + '?date=' + date)
         .then(r => r.json())
         .then(data => {
-            // console.log(data)
             reserved_slots = []
             bookings = ""
-            // console.log(data)
             
             // Constructing paragraphs for reserved times
             for (const item of data) {
-                // console.log(item.fields)
-                reserved_slots.push(item.fields.time_slot)
-                // console.log(reserved_slots)
-                bookings += `<p>${item.fields.id_client} - ${formatTime(item.fields.time_slot)} </p>`
+                reserved_slots.push(item.time_slot)
+                bookings += `<p>${item.id_client.first_name} ${item.id_client.last_name} - ${formatTime(item.time_slot)} - ${item.id_staff.first_name} </p>`
             }
 
             // Constructing options for time select
@@ -64,15 +59,12 @@ const form = document.getElementById('form');
 // Submitting the form
 document.getElementById('button').addEventListener('click', function (e) {
     e.preventDefault();
-    // const formdata = {
-    //     first_name: document.getElementById('first_name').value,
-    //     reservation_date: document.getElementById('reservation_date').value,
-    //     reservation_slot: document.getElementById('reservation_slot').value,
-    // }
-    // console.log(new FormData(form))
-    fetch(form.action, { method: 'post', body: new FormData(form)})
-        .then(r => r.text())
+
+    fetch(form.action, {method: 'post', body: new FormData(form)})
+        .then(r => r.json())
         .then(data => {
-        getBookings()
+            if (data.message == 'success') {
+                alert('Success!');
+                getBookings()}
         })
 })

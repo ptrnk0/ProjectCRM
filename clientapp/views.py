@@ -44,12 +44,17 @@ class ClientDetail(DetailView):
     template_name = 'client_detail.html'
 
     def get_object(self, queryset=None):
+        client = Client.objects.get(id=self.kwargs.get(self.pk_url_kwarg))
         photo_queryset = ClientPhoto.objects.filter(client_id=self.kwargs.get(self.pk_url_kwarg))
         if photo_queryset:
             new_photo = photo_queryset.all()
         else:
             new_photo = None
-        return {"client": super().get_object(queryset), "photo": new_photo}
+        if client:
+            record = client.records.all()
+        else:
+            record = None
+        return {"client": super().get_object(queryset), "photo": new_photo, 'records': record}
 
 
 class ClientUpdate(PermissionRequiredMixin, UpdateView):

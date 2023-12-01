@@ -10,6 +10,11 @@
         <p>Email: {{object.client.email}}</p>
         <p>Birthday: {{object.client.birthday|date:"d-m-Y"}}</p>
         <p>Comments: {{object.client.comment}}</p>
+        <p>Records: 
+            {% for item in object.records %}
+            {{item.date|date:"d-m-Y"}} at {{item.time_slot}} PM, staff {{item.id_staff.first_name}} {{item.id_staff.last_name}} |
+            {% endfor %}
+        </p>
     </div>
     <div id="carouselExample" class="col-lg-8 mb-4 carousel slide">
         <div class="carousel-inner">
