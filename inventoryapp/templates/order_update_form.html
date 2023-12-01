@@ -1,9 +1,5 @@
 {% extends 'inventory_main.html' %}
 
-{% block bt_ins %}
-<button onclick="window.location.href='{% url 'OrderCreate' %}';" type="button" class="btn btn-secondary">Insert Order</button>
-{% endblock %}
-
 {% block content %}
 <form  method="POST">
     {% csrf_token %}
