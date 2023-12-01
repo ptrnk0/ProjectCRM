@@ -17,13 +17,13 @@
         <header class="header">
             <div>
                 <div class="row align-items-center">
-                    <div class="col-lg-3 offset-lg-8">
+                    <div class="col-9 col-sm-6 col-lg-3 offset-lg-8 offset-sm-4">
                         <form class="d-flex" id="search">
                             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                             <button class="btn btn-outline-success" type="submit">Search</button>
                         </form>
                     </div>
-                    <div class="col-lg-1">
+                    <div class="col-3 col-sm-2 col-lg-1" style="text-align: center;">
                         <a href="#" class="d-flex align-items-center justify-content-center px-1 py-2 dropdown-toggle" id="dropdownUser3" data-bs-toggle="dropdown" aria-expanded="false">
                             <img src="{% static 'inventoryapp/img/profile-logo.png' %}" class="rounded-circle" width="42" height="34">
                         </a>
@@ -34,7 +34,7 @@
                             <li><a class="dropdown-item" href="{% url 'logoutSite' %}">Sign out</a></li>
                         </ul>
                         {% if user.is_authenticated %}
-                        <span class="text-center px-lg-3">{{ user.get_username|title }}</span>
+                        <span style="display: inline-block;">{{ user.get_username|title }}</span>
                         {% endif %}
                     </div>
                 </div>
@@ -94,7 +94,7 @@
 
         <script async src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         {% block js %}
-        <script src="{% static 'js/test.js' %}"></script>
+        <script async src="{% static 'js/test.js' %}"></script>
         {% endblock %}
 
     </body>
