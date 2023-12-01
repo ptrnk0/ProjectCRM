@@ -6,71 +6,54 @@
 {% endblock %}
 
 {% block record %}
-<a class="nav-link active" href="{% url 'create_record' %}">Record</a>
+<a class="nav-link active" aria-current="page" href="{% url 'create_record' %}">Record</a>
 {% endblock %}
 
 {% block container %}
 <section>
     <article>
-      <h1>Make a reservation</h1>
-      <!--Begin row-->
+        <h2>Make a record</h2>
         <div class="row">
-            <!--Begin col-->
             <div class="col-lg-6 ">
                 <form method="POST" id="form">
                 {% csrf_token %}
                 <p>
                     <label for="first_name">Client:</label>
-{#                    <input type="text" placeholder="Your Name" maxlength="200" required="" id="first_name">#}
                     {{ form.id_client }}
                 </p>
                 <p>
-                <!-- Step 9: Part one -->
                     <label for="reservation_date">Reservation date:</label>
-{#                    <input type="date" placeholder="Reservation Date" required="" id="reservation_date">#}
                     {{ form.date }}
                 </p>
             
                 <p>
                     <label for="reservation_slot">Reservation time:</label>
                     <select id="reservation_slot" name="time_slot" class="form-select">
-                    <option value="0" disabled>Select time</option>
+                        <option value="0" disabled>Select time</option>
                     </select>
-{#                    {{ form.time_slot }}#}
                 </p>
                 <p>
-                <!-- Step 9: Part one -->
                     <label for="reservation_date">Staff:</label>
-{#                    <input type="date" placeholder="Reservation Date" required="" id="reservation_date">#}
                     {{ form.id_staff }}
                 </p>
                 <p>
-                <!-- Step 9: Part one -->
                     <label for="reservation_date">Price:</label>
-{#                    <input type="date" placeholder="Reservation Date" required="" id="reservation_date">#}
                     {{ form.price }}
                 </p>
                 <p>
-                <!-- Step 9: Part one -->
                     <label for="reservation_date">Service:</label>
-{#                    <input type="date" placeholder="Reservation Date" required="" id="reservation_date">#}
                     {{ form.id_service }}
                 </p>
-                <button type="button" class="btn btn-primary" id="button">Reserve</button>
-
+                <button class="btn btn-success mt-2" type="button" id="button">Reserve</button>
                 </form>
             </div>
-            <!--End col-->
 
-            <!--Begin col-->
             <div class="col-lg-6 shadow-lg p-3 mb-4 bg-body-tertiary">
-                <h2>Bookings For <span id="today"></span></h2>
-                <div id="records">
-                </div>
+                <h2>Records for <span id="today"></span></h2>
+                    <div id="records">
+                    </div>
             </div>
-            <!--End col-->
         </div>
-        <!--End row-->
 
     </article>
 </section>

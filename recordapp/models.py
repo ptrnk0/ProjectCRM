@@ -7,7 +7,7 @@ from serviceapp import models as service
 
 class Record(models.Model):
     date = models.DateField()
-    id_client = models.ForeignKey(client.Client, on_delete=models.PROTECT)
+    id_client = models.ForeignKey(client.Client, on_delete=models.PROTECT, related_name='records')
     id_staff = models.ForeignKey(User, on_delete=models.PROTECT)
     id_service = models.ForeignKey(service.Service, on_delete=models.PROTECT)
     price = models.DecimalField(max_digits=5, decimal_places=2)
